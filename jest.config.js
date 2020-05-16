@@ -7,10 +7,13 @@ module.exports = {
     path.join(__dirname, 'src'),
     path.join(__dirname, 'test'),
   ],
-  // moduleNameMapper: {},
+  testPathIgnorePatterns: ['node_modules', '__fixtures__'],
+  moduleNameMapper: {
+    'test-utils': path.join(__dirname, 'test/utils.js'),
+  },
   setupFilesAfterEnv: [require.resolve('./test/setup.js')],
   snapshotResolver: require.resolve('./test/resolve-snapshot.js'),
-  collectCoverageFrom: ['**/src/**/*.js'],
+  collectCoverageFrom: ['**/src/**/*.js', '!**/__fixtures__/*'],
   // coverageThreshold: {
   //   global: {
   //     statements:17,

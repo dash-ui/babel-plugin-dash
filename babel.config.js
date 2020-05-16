@@ -12,6 +12,7 @@ module.exports = (api) => {
       restSpread: false,
       objectAssign: false,
       typescript: false,
+      macros: false,
     },
   ]
 

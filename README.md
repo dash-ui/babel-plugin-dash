@@ -23,14 +23,31 @@
 <pre align="center">npm i babel-plugin-dash</pre>
 <hr>
 
-A babel plugin for [**@dash-ui**](https://github.com/dash-ui)
+A babel plugin for [**@dash-ui**](https://github.com/dash-ui).
+
+## Features
+
+- [x] Minifies styles defined by `styles()`, `styles.one()`, `styles.keyframes()`, and `styles.global()`
+- [x] Transforms style objects to CSS strings for faster runtime compilation and better minification
+- [x] Injects `/*#__PURE__*/` flag comments to mark `styles()` and `styles.one()` for dead code elimination
 
 ## Quick Start
+
+Basic usage
 
 ```js
 // babel.config.js
 module.exports = {
   plugins: ['dash'],
+}
+```
+
+With a custom styles instance
+
+```js
+// babel.config.js
+module.exports = {
+  plugins: [['dash', {instances: ['./src/styles']}]],
 }
 ```
 

@@ -1,0 +1,359 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@emotion/babel-plugin-core create-styles 1`] = `
+"import styles from '@dash-ui/styles'
+
+const flex = 'flex'
+const grid2 = 'grid'
+
+const cls = styles({
+  default: 'display: block;',
+  flex: \`
+    display: \${flex};
+    @media (min-width: 300px) {
+      flex-direction: column;
+    }
+  \`,
+  flex2: ({color: {blue}}) => ({
+    color: blue,
+  }),
+  flex3: ({flex}) => ({
+    display: flex,
+  }),
+  flex4: ({flex}) => \`display: \${flex};\`,
+  flex5: () => ({
+    display: 'flex',
+  }),
+  flex6: ({flex}) => {
+    if (!flex) {
+      return {
+        display: 'block',
+      }
+    } else if (true) {
+      return {
+        display: 'fish',
+      }
+    } else {
+      return {
+        display: 'fish',
+      }
+    }
+
+    return {
+      display: flex,
+    }
+  },
+  grid: {
+    display: 'grid',
+  },
+  grid2: {
+    display: grid2,
+  },
+  media: {
+    '@media (min-width: 1280px)': {
+      display: 'block',
+    },
+  },
+})
+
+const clsOne = styles.one\`
+  display: \${flex};
+\`
+
+const clsTwo = styles.one(\`
+  display: \${flex};
+\`)
+
+const clsThree = styles.one(
+  () => \`
+    display: \${flex};
+  \`
+)
+
+const clsFour = styles.one({display: 'flex'})
+
+const clsFive = styles.one('display: flex;')
+const clsSix = styles.one({display: flex})
+const clsSeven = styles.one(
+  ({flex}) => \`
+    display: \${flex};
+  \`
+)
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const flex = 'flex';
+const grid2 = 'grid';
+const cls = /*#__PURE__*/styles({
+  default: \\"display:block;\\",
+  flex: \\"display:\\" + flex + \\";@media (min-width:300px){flex-direction:column;}\\",
+  flex2: ({
+    color: {
+      blue
+    }
+  }) => \\"color:\\" + blue + \\";\\",
+  flex3: ({
+    flex
+  }) => \\"display:\\" + flex + \\";\\",
+  flex4: ({
+    flex
+  }) => \\"display:\\" + flex + \\";\\",
+  flex5: () => \\"display:flex;\\",
+  flex6: ({
+    flex
+  }) => {
+    if (!flex) {
+      return \\"display:block;\\";
+    } else if (true) {
+      return \\"display:fish;\\";
+    } else {
+      return \\"display:fish;\\";
+    }
+
+    return \\"display:\\" + flex + \\";\\";
+  },
+  grid: \\"display:grid;\\",
+  grid2: {
+    display: grid2
+  },
+  media: \\"@media (min-width: 1280px){display:block;}\\"
+});
+const clsOne = /*#__PURE__*/styles.one(\\"display:\\" + flex + \\";\\");
+const clsTwo = /*#__PURE__*/styles.one(\\"display:\\" + flex + \\";\\");
+const clsThree = /*#__PURE__*/styles.one(() => \\"display:\\" + flex + \\";\\");
+const clsFour = /*#__PURE__*/styles.one(\\"display:flex;\\");
+const clsFive = /*#__PURE__*/styles.one(\\"display:flex;\\");
+const clsSix = /*#__PURE__*/styles.one({
+  display: flex
+});
+const clsSeven = /*#__PURE__*/styles.one(({
+  flex
+}) => \\"display:\\" + flex + \\";\\");"
+`;
+
+exports[`@emotion/babel-plugin-core create-styles 2`] = `
+"import styles from '@dash-ui/styles'
+
+const flex = 'flex'
+const grid2 = 'grid'
+
+const cls = styles({
+  default: 'display: block;',
+  flex: \`
+    display: \${flex};
+    @media (min-width: 300px) {
+      flex-direction: column;
+    }
+  \`,
+  flex2: ({color: {blue}}) => ({
+    color: blue,
+  }),
+  flex3: ({flex}) => ({
+    display: flex,
+  }),
+  flex4: ({flex}) => \`display: \${flex};\`,
+  flex5: () => ({
+    display: 'flex',
+  }),
+  flex6: ({flex}) => {
+    if (!flex) {
+      return {
+        display: 'block',
+      }
+    } else if (true) {
+      return {
+        display: 'fish',
+      }
+    } else {
+      return {
+        display: 'fish',
+      }
+    }
+
+    return {
+      display: flex,
+    }
+  },
+  grid: {
+    display: 'grid',
+  },
+  grid2: {
+    display: grid2,
+  },
+  media: {
+    '@media (min-width: 1280px)': {
+      display: 'block',
+    },
+  },
+})
+
+const clsOne = styles.one\`
+  display: \${flex};
+\`
+
+const clsTwo = styles.one(\`
+  display: \${flex};
+\`)
+
+const clsThree = styles.one(
+  () => \`
+    display: \${flex};
+  \`
+)
+
+const clsFour = styles.one({display: 'flex'})
+
+const clsFive = styles.one('display: flex;')
+const clsSix = styles.one({display: flex})
+const clsSeven = styles.one(
+  ({flex}) => \`
+    display: \${flex};
+  \`
+)
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const flex = 'flex';
+const grid2 = 'grid';
+const cls = /*#__PURE__*/styles({
+  default: \\"display:block;\\",
+  flex: \\"display:\\" + flex + \\";@media (min-width:300px){flex-direction:column;}\\",
+  flex2: ({
+    color: {
+      blue
+    }
+  }) => \\"color:\\" + blue + \\";\\",
+  flex3: ({
+    flex
+  }) => \\"display:\\" + flex + \\";\\",
+  flex4: ({
+    flex
+  }) => \\"display:\\" + flex + \\";\\",
+  flex5: () => \\"display:flex;\\",
+  flex6: ({
+    flex
+  }) => {
+    if (!flex) {
+      return \\"display:block;\\";
+    } else if (true) {
+      return \\"display:fish;\\";
+    } else {
+      return \\"display:fish;\\";
+    }
+
+    return \\"display:\\" + flex + \\";\\";
+  },
+  grid: \\"display:grid;\\",
+  grid2: {
+    display: grid2
+  },
+  media: \\"@media (min-width: 1280px){display:block;}\\"
+});
+const clsOne = /*#__PURE__*/styles.one(\\"display:\\" + flex + \\";\\");
+const clsTwo = /*#__PURE__*/styles.one(\\"display:\\" + flex + \\";\\");
+const clsThree = /*#__PURE__*/styles.one(() => \\"display:\\" + flex + \\";\\");
+const clsFour = /*#__PURE__*/styles.one(\\"display:flex;\\");
+const clsFive = /*#__PURE__*/styles.one(\\"display:flex;\\");
+const clsSix = /*#__PURE__*/styles.one({
+  display: flex
+});
+const clsSeven = /*#__PURE__*/styles.one(({
+  flex
+}) => \\"display:\\" + flex + \\";\\");"
+`;
+
+exports[`@emotion/babel-plugin-core create-styles-instance 1`] = `
+"import styles from '../styles'
+
+const flex = 'flex'
+const grid2 = 'grid'
+
+const cls = styles({
+  default: 'display: block;',
+  flex: \`
+    display: \${flex};
+    @media (min-width: 300px) {
+      flex-direction: column;
+    }
+  \`,
+  grid: {
+    display: 'grid',
+  },
+  grid2: {
+    display: grid2,
+  },
+})
+
+const clsOne = styles.one\`
+  display: \${flex};
+\`
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import styles from '../styles';
+const flex = 'flex';
+const grid2 = 'grid';
+const cls = styles({
+  default: 'display: block;',
+  flex: \`
+    display: \${flex};
+    @media (min-width: 300px) {
+      flex-direction: column;
+    }
+  \`,
+  grid: {
+    display: 'grid'
+  },
+  grid2: {
+    display: grid2
+  }
+});
+const clsOne = styles.one\`
+  display: \${flex};
+\`;"
+`;
+
+exports[`@emotion/babel-plugin-core create-styles-instance 2`] = `
+"import styles from '../styles'
+
+const flex = 'flex'
+const grid2 = 'grid'
+
+const cls = styles({
+  default: 'display: block;',
+  flex: \`
+    display: \${flex};
+    @media (min-width: 300px) {
+      flex-direction: column;
+    }
+  \`,
+  grid: {
+    display: 'grid',
+  },
+  grid2: {
+    display: grid2,
+  },
+})
+
+const clsOne = styles.one\`
+  display: \${flex};
+\`
+
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const flex = 'flex';
+const grid2 = 'grid';
+const cls = /*#__PURE__*/styles({
+  default: \\"display:block;\\",
+  flex: \\"display:\\" + flex + \\";@media (min-width:300px){flex-direction:column;}\\",
+  grid: \\"display:grid;\\",
+  grid2: {
+    display: grid2
+  }
+});
+const clsOne = /*#__PURE__*/styles.one(\\"display:\\" + flex + \\";\\");"
+`;

@@ -52,7 +52,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/node": "^7.8.7",
     "@lunde/babel-preset-es": "latest",
+    "babel-check-duplicated-nodes": "^1.0.0",
     "babel-eslint": "latest",
     "babel-plugin-annotate-pure-calls": "latest",
     "eslint": "latest",
@@ -60,12 +62,18 @@
     "eslint-plugin-jest": "latest",
     "husky": "latest",
     "jest": "latest",
+    "jest-in-case": "^1.0.2",
     "lint-staged": "latest",
     "prettier": "latest"
   },
   "dependencies": {
+    "@babel/generator": "^7.9.6",
+    "@babel/helper-module-imports": "^7.8.3",
+    "@dash-ui/styles": "^0.4.4",
     "babel-plugin-macros": "^2.8.0",
-    "minify-css.macro": "^1.0.6"
+    "convert-source-map": "^1.7.0",
+    "minify-css.macro": "^1.0.6",
+    "source-map": "^0.7.3"
   },
   "peerDependencies": {}
 }
