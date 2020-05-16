@@ -1,5 +1,5 @@
 {
-  "name": "@dash-ui/babel-plugin-dash",
+  "name": "babel-plugin-dash",
   "version": "1.0.0",
   "homepage": "https://github.com/dash-ui/babel-plugin-dash#readme",
   "repository": "github:dash-ui/babel-plugin-dash",
@@ -10,14 +10,13 @@
     "babel plugin dash"
   ],
   "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
   "source": "src/index.js",
   "files": [
-    "/dist"
+    "/dist",
+    "/src"
   ],
   "exports": {
     ".": {
-      "browser": "./dist/module/index.js",
       "import": "./dist/esm/index.mjs",
       "require": "./dist/main/index.js",
       "source": "./src/index.js",
@@ -28,10 +27,9 @@
   },
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build-esm && npm run build-main && npm run build-module",
+    "build": "npm run build-esm && npm run build-main",
     "build-esm": "npm run compile -- -d dist/esm --env-name esm --out-file-extension .mjs",
-    "build-main": "npm run compile -- -d dist/main --env-name main",
-    "build-module": "npm run compile -- -d dist/module --env-name module",
+    "build-main": "npm run compile -- -d dist/main --env-name main --out-file-extension .js",
     "compile": "babel src -x .js --ignore \"**/*.test.js\" --delete-dir-on-start",
     "format": "prettier --write \"**/*.{js,md,yml,json,eslintrc,prettierrc}\"",
     "lint": "eslint .",
@@ -65,6 +63,9 @@
     "lint-staged": "latest",
     "prettier": "latest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel-plugin-macros": "^2.8.0",
+    "minify-css.macro": "^1.0.6"
+  },
   "peerDependencies": {}
 }

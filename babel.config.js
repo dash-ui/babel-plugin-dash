@@ -1,18 +1,13 @@
-module.exports = api => {
-  const module = api.env('module')
+module.exports = (api) => {
   const esm = api.env('esm')
   const presetEnv = [
     '@lunde/es',
     {
       env: {
-        modules: esm || module ? false : 'commonjs',
-        targets: module
-          ? {
-              browsers: '> 2%',
-            }
-          : {
-              node: esm ? '12' : '10',
-            },
+        modules: esm ? false : 'commonjs',
+        targets: {
+          node: '12',
+        },
       },
       restSpread: false,
       objectAssign: false,
