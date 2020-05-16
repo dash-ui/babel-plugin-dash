@@ -54,15 +54,14 @@
     ]
   },
   "devDependencies": {
-    "@lunde/create-pkg": "file:/Users/admiral/.npm/_npx/58706/lib/node_modules/@lunde/create-pkg/",
     "@lunde/babel-preset-es": "latest",
-    "jest": "latest",
     "babel-eslint": "latest",
     "babel-plugin-annotate-pure-calls": "latest",
     "eslint": "latest",
     "eslint-import-resolver-jest": "latest",
     "eslint-plugin-jest": "latest",
     "husky": "latest",
+    "jest": "latest",
     "lint-staged": "latest",
     "prettier": "latest"
   },
