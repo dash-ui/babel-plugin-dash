@@ -43,6 +43,23 @@ const cls = styles({
       display: flex,
     }
   },
+  flex7: ({flex}) => {
+    return flex
+      ? {
+          display: flex,
+        }
+      : {
+          display: 'block',
+        }
+  },
+  flex8: ({flex}) =>
+    flex
+      ? {
+          display: flex,
+        }
+      : {
+          display: 'block',
+        },
   grid: {
     display: 'grid',
   },
@@ -79,6 +96,17 @@ const clsSeven = styles.one(
     display: \${flex};
   \`
 )
+const clsEight = styles.keyframes(
+  ({flex}) => \`
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  \`
+)
 
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -113,6 +141,22 @@ const cls = /*#__PURE__*/styles({
 
     return \\"display:\\" + flex + \\";\\";
   },
+  flex7: ({
+    flex
+  }) => {
+    return flex ? {
+      display: flex
+    } : {
+      display: 'block'
+    };
+  },
+  flex8: ({
+    flex
+  }) => flex ? {
+    display: flex
+  } : {
+    display: 'block'
+  },
   grid: \\"display:grid;\\",
   grid2: {
     display: grid2
@@ -129,7 +173,10 @@ const clsSix = /*#__PURE__*/styles.one({
 });
 const clsSeven = /*#__PURE__*/styles.one(({
   flex
-}) => \\"display:\\" + flex + \\";\\");"
+}) => \\"display:\\" + flex + \\";\\");
+const clsEight = styles.keyframes(({
+  flex
+}) => \\"0%{opacity:0;}100%{opacity:1;}\\");"
 `;
 
 exports[`@emotion/babel-plugin-core create-styles 2`] = `
@@ -175,6 +222,23 @@ const cls = styles({
       display: flex,
     }
   },
+  flex7: ({flex}) => {
+    return flex
+      ? {
+          display: flex,
+        }
+      : {
+          display: 'block',
+        }
+  },
+  flex8: ({flex}) =>
+    flex
+      ? {
+          display: flex,
+        }
+      : {
+          display: 'block',
+        },
   grid: {
     display: 'grid',
   },
@@ -211,6 +275,17 @@ const clsSeven = styles.one(
     display: \${flex};
   \`
 )
+const clsEight = styles.keyframes(
+  ({flex}) => \`
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  \`
+)
 
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -245,6 +320,22 @@ const cls = /*#__PURE__*/styles({
 
     return \\"display:\\" + flex + \\";\\";
   },
+  flex7: ({
+    flex
+  }) => {
+    return flex ? {
+      display: flex
+    } : {
+      display: 'block'
+    };
+  },
+  flex8: ({
+    flex
+  }) => flex ? {
+    display: flex
+  } : {
+    display: 'block'
+  },
   grid: \\"display:grid;\\",
   grid2: {
     display: grid2
@@ -261,7 +352,10 @@ const clsSix = /*#__PURE__*/styles.one({
 });
 const clsSeven = /*#__PURE__*/styles.one(({
   flex
-}) => \\"display:\\" + flex + \\";\\");"
+}) => \\"display:\\" + flex + \\";\\");
+const clsEight = styles.keyframes(({
+  flex
+}) => \\"0%{opacity:0;}100%{opacity:1;}\\");"
 `;
 
 exports[`@emotion/babel-plugin-core create-styles-instance 1`] = `
@@ -356,4 +450,52 @@ const cls = /*#__PURE__*/styles({
   }
 });
 const clsOne = /*#__PURE__*/styles.one(\\"display:\\" + flex + \\";\\");"
+`;
+
+exports[`@emotion/babel-plugin-core global 1`] = `
+"
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+"
+`;
+
+exports[`@emotion/babel-plugin-core global 2`] = `
+"
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+"
+`;
+
+exports[`@emotion/babel-plugin-core keyframes 1`] = `
+"
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+"
+`;
+
+exports[`@emotion/babel-plugin-core keyframes 2`] = `
+"
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+"
+`;
+
+exports[`@emotion/babel-plugin-core one 1`] = `
+"
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+"
+`;
+
+exports[`@emotion/babel-plugin-core one 2`] = `
+"
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+"
 `;

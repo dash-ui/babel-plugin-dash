@@ -51,7 +51,16 @@ module.exports = {
 }
 ```
 
-## API
+## Options
+
+| Option    | Type       | Default               | Description                                                                                                                                                                                                                                                                                                                                                                    |
+| --------- | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| instances | `string[]` | `["@dash-ui/styles"]` | This option allows `babel-plugin-dash` to know which imports to treat as emotion imports and transform as such. This option is only required if you use a custom instance of emotion created with create-emotion or you're importing emotion from somewhere other than the paths above. Relative paths are resolved relative to process.cwd() (the current working directory). |
+
+## Thank you
+
+One again, I couldn't have embarked on this plugin without the @emotion-js team putting in
+a load of work to kick it off.
 
 ## LICENSE
 
