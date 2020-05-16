@@ -1,0 +1,71 @@
+{
+  "name": "@dash-ui/babel-plugin-dash",
+  "version": "1.0.0",
+  "homepage": "https://github.com/dash-ui/babel-plugin-dash#readme",
+  "repository": "github:dash-ui/babel-plugin-dash",
+  "bugs": "https://github.com/dash-ui/babel-plugin-dash/issues",
+  "license": "MIT",
+  "description": "A babel plugin for dash-ui",
+  "keywords": [
+    "babel plugin dash"
+  ],
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "source": "src/index.js",
+  "files": [
+    "/dist"
+  ],
+  "exports": {
+    ".": {
+      "browser": "./dist/module/index.js",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/main/index.js",
+      "source": "./src/index.js",
+      "default": "./dist/main/index.js"
+    },
+    "./package.json": "./package.json",
+    "./": "./"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build-esm && npm run build-main && npm run build-module",
+    "build-esm": "npm run compile -- -d dist/esm --env-name esm --out-file-extension .mjs",
+    "build-main": "npm run compile -- -d dist/main --env-name main",
+    "build-module": "npm run compile -- -d dist/module --env-name module",
+    "compile": "babel src -x .js --ignore \"**/*.test.js\" --delete-dir-on-start",
+    "format": "prettier --write \"**/*.{js,md,yml,json,eslintrc,prettierrc}\"",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
+    "test": "jest",
+    "validate": "npm run lint && npm run test -- --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint",
+      "prettier --write"
+    ],
+    "**/*.{md,yml,json,eslintrc,prettierrc}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@lunde/create-pkg": "file:/Users/admiral/.npm/_npx/58706/lib/node_modules/@lunde/create-pkg/",
+    "@lunde/babel-preset-es": "latest",
+    "jest": "latest",
+    "babel-eslint": "latest",
+    "babel-plugin-annotate-pure-calls": "latest",
+    "eslint": "latest",
+    "eslint-import-resolver-jest": "latest",
+    "eslint-plugin-jest": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest"
+  },
+  "dependencies": {},
+  "peerDependencies": {}
+}
