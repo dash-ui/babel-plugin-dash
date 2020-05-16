@@ -59,7 +59,7 @@ module.exports = {
 
 ## Thank you
 
-One again, I couldn't have embarked on this plugin without the @emotion-js team putting in
+Again, I couldn't have embarked on this plugin without the [@emotion-js](https://github.com/emotion-js) team putting in
 a load of work to kick it off.
 
 ## LICENSE
