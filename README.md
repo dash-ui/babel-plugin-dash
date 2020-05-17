@@ -49,12 +49,24 @@ With a custom styles instance
 // babel.config.js
 module.exports = {
   plugins: [
-    ['dash', {instances: {styles: ['./src/styles']}, mq: ['./src/mq']}],
+    [
+      'dash',
+      {
+        instances: {
+          // Transforms based on the `default` export in `src/styles`
+          // i.e. import styles from './styles'
+          styles: ['./src/styles'],
+          // Transforms based on the `default` export in `src/mq`
+          // i.e. import mq from './mq'
+          mq: ['./src/mq'],
+        },
+      },
+    ],
   ],
 }
 ```
 
-With a custom styles instance and export
+With a custom styles instance and named export
 
 ```js
 // babel.config.js
