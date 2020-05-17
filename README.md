@@ -16,7 +16,7 @@
     <img alt="NPM Version" src="https://img.shields.io/npm/v/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
   </a>
   <a aria-label="License" href="https://jaredlunde.mit-license.org/">
-    <img alt="MIT License" src="https://img.shields.io/npm/l/@dash-ui/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
+    <img alt="MIT License" src="https://img.shields.io/npm/l/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
   </a>
 </p>
 
