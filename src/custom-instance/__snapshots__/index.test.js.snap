@@ -72,7 +72,8 @@ const variant7 = styles.global(({vh}) => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-// \\"html{display:flex;}\\"
+import styles from '../../styles'; // \\"html{display:flex;}\\"
+
 const variant0 = styles.global(\\"html{display:flex;}\\"); // \\"html{color:\\"+color.red+\\";}\\"
 
 const variant1 = styles.global(({
@@ -209,7 +210,8 @@ const variant7 = styles.keyframes(({vh}) => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-// \\"0%{opacity:0;}\\"
+import styles from '../../styles'; // \\"0%{opacity:0;}\\"
+
 const variant0 = styles.keyframes(\\"0%{opacity:0;}\\"); // \\"0%{opacity:0;}100%{opacity:1;}\\"
 
 const variant1 = styles.keyframes(() => \\"0%{opacity:0;}100%{opacity:1}\\"); // no cahnge
@@ -317,7 +319,8 @@ const variant7 = styles.one(({vh}) => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-// \\"display:flex;\\"
+import styles from '../../styles'; // \\"display:flex;\\"
+
 const variant0 = /*#__PURE__*/styles.one(\\"display:flex;\\"); // \\"color:\\"+color.red+\\";\\"
 
 const variant1 = /*#__PURE__*/styles.one(({
@@ -424,6 +427,7 @@ const cls = styles({
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
+import styles from '../../styles';
 const cls = /*#__PURE__*/styles({
   // display:flex;
   default: \\"display:flex;\\",
