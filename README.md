@@ -56,6 +56,7 @@ module.exports = {
           // Transforms based on the `default` export in `src/styles`
           // i.e. import styles from './styles'
           styles: ['./src/styles'],
+          // If using @dash-ui/mq
           // Transforms based on the `default` export in `src/mq`
           // i.e. import mq from './mq'
           mq: ['./src/mq'],
@@ -79,6 +80,7 @@ module.exports = {
           // Transforms based on the `styles` export in `src/dash`
           // i.e. import {styles} from './dash'
           styles: {'./src/dash': 'styles'},
+          // If using @dash-ui/mq
           // Transforms based on the `mq` export in `src/dash`
           // i.e. import {mq} from './dash'
           mq: {'./src/dash': 'mq'},
