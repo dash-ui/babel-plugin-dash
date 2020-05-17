@@ -924,10 +924,17 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@dash-ui/styles@^0.4.4":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@dash-ui/styles/-/styles-0.4.4.tgz#942e59f3e191558816fd3d588e34a4946f1acf47"
-  integrity sha512-IQ+zDa/VYuInL0UKW25JZCTg2fji341L0lOFSb1Ds8kPfyKLKxERX4Kf/xFTXfOJFmE/XLVMhKUSM68/njrOVg==
+"@dash-ui/react@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@dash-ui/react/-/react-0.4.1.tgz#7dc891b10882d1c2057ea1f08834141ed5c76891"
+  integrity sha512-j7V0dVE7BVab68giqpj4xGBhXdHw8zSlrKjqTi5tAk8j9407k2jO9+e35qv4aOTHqmgIpkgQI3w6A+G/RSeHIA==
+  dependencies:
+    "@react-hook/passive-layout-effect" "^1.0.3"
+
+"@dash-ui/styles@^0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@dash-ui/styles/-/styles-0.4.8.tgz#0d45237216ad8e9e065c6b88b9e2e1c44977b60a"
+  integrity sha512-3AzEQBreO8TTWJ/d715yVLY5JxR8BubgrmWOfMZEfmElZD0E3G0ezm3WXnfjYnrpK3q9qV7b/DAWfzVAM0zTMA==
   dependencies:
     "@dash-ui/stylis" "^0.1.1"
     "@dash-ui/unitless" "^1.0.1"
@@ -1146,6 +1153,11 @@
     babel-plugin-closure-elimination latest
     babel-plugin-dev-expression latest
     babel-plugin-macros latest
+
+"@react-hook/passive-layout-effect@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@react-hook/passive-layout-effect/-/passive-layout-effect-1.0.3.tgz#55faac3bce2ad2b4a12eb0c6a52903da32fdc006"
+  integrity sha512-VFUvBBSYWRigI/YhMRp28tncMWYVgzsUdmdIdZyJ3CpKgj5sLmm4RmJdIoKIfWO/WRX5XQ+83GW2E6VmqTHZ3g==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"

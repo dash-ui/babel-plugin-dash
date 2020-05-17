@@ -3,6 +3,8 @@
 exports[`babel-plugin-dash global 1`] = `
 "import styles from '@dash-ui/styles'
 
+// styles.global(\\"html{display:flex;}\\")
+const variant = styles.global\`html { display: flex; }\`
 // \\"html{display:flex;}\\"
 const variant0 = styles.global('html { display: flex; } ')
 // \\"html{color:\\"+color.red+\\";}\\"
@@ -72,7 +74,9 @@ const variant7 = styles.global(({vh}) => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import styles from '@dash-ui/styles'; // \\"html{display:flex;}\\"
+import styles from '@dash-ui/styles'; // styles.global(\\"html{display:flex;}\\")
+
+const variant = styles.global(\\"html{display:flex;}\\"); // \\"html{display:flex;}\\"
 
 const variant0 = styles.global(\\"html{display:flex;}\\"); // \\"html{color:\\"+color.red+\\";}\\"
 
@@ -130,6 +134,8 @@ const variant7 = styles.global(({
 exports[`babel-plugin-dash keyframes 1`] = `
 "import styles from '@dash-ui/styles'
 
+// styles.keyframe(\\"0%{opacity:0;}\\")
+const variant = styles.keyframes\`0% { opacity: 0; } \`
 // \\"0%{opacity:0;}\\"
 const variant0 = styles.keyframes('0% { opacity: 0; } ')
 // \\"0%{opacity:0;}100%{opacity:1;}\\"
@@ -210,7 +216,9 @@ const variant7 = styles.keyframes(({vh}) => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import styles from '@dash-ui/styles'; // \\"0%{opacity:0;}\\"
+import styles from '@dash-ui/styles'; // styles.keyframe(\\"0%{opacity:0;}\\")
+
+const variant = styles.keyframes(\\"0%{opacity:0;}\\"); // \\"0%{opacity:0;}\\"
 
 const variant0 = styles.keyframes(\\"0%{opacity:0;}\\"); // \\"0%{opacity:0;}100%{opacity:1;}\\"
 
@@ -267,6 +275,8 @@ exports[`babel-plugin-dash one 1`] = `
 "import styles from '@dash-ui/styles'
 
 // \\"display:flex;\\"
+const variant = styles.one\`display: flex;\`
+// \\"display:flex;\\"
 const variant0 = styles.one('display: flex;')
 // \\"color:\\"+color.red+\\";\\"
 const variant1 = styles.one(
@@ -320,6 +330,8 @@ const variant7 = styles.one(({vh}) => {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import styles from '@dash-ui/styles'; // \\"display:flex;\\"
+
+const variant = /*#__PURE__*/styles.one(\\"display:flex;\\"); // \\"display:flex;\\"
 
 const variant0 = /*#__PURE__*/styles.one(\\"display:flex;\\"); // \\"color:\\"+color.red+\\";\\"
 

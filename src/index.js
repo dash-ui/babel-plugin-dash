@@ -1,9 +1,11 @@
 import nodePath from 'path'
 import {createStylesMacro} from './createStylesMacro'
+import {createReactMacro} from './createReactMacro'
 import {createMqMacro} from './createMqMacro'
 
 export const macros = {
   createStylesMacro,
+  createReactMacro,
   createMqMacro,
 }
 
@@ -46,6 +48,10 @@ export default function (babel) {
           if (state.dashInstancePaths.styles[cmpPath] !== void 0) {
             state.pluginMacros[path.node.source.value] = createStylesMacro(
               state.dashInstancePaths.styles[cmpPath],
+              path.node.source.value
+            )
+          } else if (state.dashInstancePaths.react[cmpPath] !== void 0) {
+            state.pluginMacros[path.node.source.value] = createReactMacro(
               path.node.source.value
             )
           } else if (state.dashInstancePaths.mq[cmpPath] !== void 0) {
@@ -112,7 +118,7 @@ export default function (babel) {
       },
       Program(path, state) {
         const instances = state.opts.instances || {}
-        state.dashInstancePaths = ['styles', 'mq'].reduce(
+        state.dashInstancePaths = ['styles', 'mq', 'react'].reduce(
           (acc, instanceType) => {
             const it = instances[instanceType] || []
 
@@ -136,6 +142,7 @@ export default function (babel) {
 
         state.pluginMacros = {
           '@dash-ui/styles': createStylesMacro('default', '@dash-ui/styles'),
+          '@dash-ui/react': createReactMacro('@dash-ui/react'),
         }
       },
     },

@@ -20,7 +20,6 @@ export let createStylesMacro = (instanceReferenceKey /*instancePath*/) =>
                 reference.parent.property.name
               )
             ) {
-              // console.log('One', reference.parent)
               const path = reference.parentPath
 
               if (reference.parent.property.name === 'one') {
@@ -28,16 +27,12 @@ export let createStylesMacro = (instanceReferenceKey /*instancePath*/) =>
               }
 
               if (t.isTaggedTemplateExpression(path.parent)) {
-                // console.log('Path', reference.parentPath)
                 const node = transformExpressionWithStyles(babel, path.parent)
                 if (node) {
                   reference.parentPath.parentPath.replaceWith(
                     t.callExpression(reference.parentPath.node, [node])
                   )
                 }
-                // if (node) {
-                //   path.parent = t.callExpression(t.identifier('one'), [node])
-                // }
               } else if (t.isCallExpression(path.parent)) {
                 const ppath = path.parent
 

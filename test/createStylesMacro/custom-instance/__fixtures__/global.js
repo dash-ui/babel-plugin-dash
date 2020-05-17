@@ -1,5 +1,7 @@
 import styles from '../../../../src/styles'
 
+// styles.global("html{display:flex;}")
+const variant = styles.global`html { display: flex; }`
 // "html{display:flex;}"
 const variant0 = styles.global('html { display: flex; } ')
 // "html{color:"+color.red+";}"

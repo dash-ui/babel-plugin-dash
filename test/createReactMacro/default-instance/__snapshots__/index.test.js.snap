@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`babel-plugin-dash global 1`] = `
-"import {styles} from '../../../../src/styles'
+exports[`babel-plugin-dash use-global 1`] = `
+"import {useGlobal} from '@dash-ui/react'
 
-// styles.global(\\"html{display:flex;}\\")
-const variant = styles.global\`html { display: flex; }\`
-// \\"html{display:flex;}\\"
-const variant0 = styles.global('html { display: flex; } ')
+// useGlobal(\\"html{display:flex;}\\")
+const variant = useGlobal\`html { display: flex; } \`
+// useGlobal(\\"html{display:flex;}\\")
+const variant0 = useGlobal('html { display: flex; } ')
 // \\"html{color:\\"+color.red+\\";}\\"
-const variant1 = styles.global(
+const variant1 = useGlobal(
   ({color}) => \`
     html {
       color: \${color.red};
@@ -16,13 +16,13 @@ const variant1 = styles.global(
   \`
 )
 // {html: {color: color.blue}}
-const variant2 = styles.global({
+const variant2 = useGlobal({
   html: {
     color: color.blue,
   },
 })
 // \\"html{color:\\"+color.yellow+\\";}\\"
-const variant3 = styles.global(({color}) => {
+const variant3 = useGlobal(({color}) => {
   return \`
     html { 
       color: \${color.yellow}; 
@@ -30,7 +30,7 @@ const variant3 = styles.global(({color}) => {
   \`
 })
 // \\"html{color:\\"+color.green+\\";}\\"
-const variant4 = styles.global(({color}) => {
+const variant4 = useGlobal(({color}) => {
   return {
     html: {
       color: color.green,
@@ -39,7 +39,7 @@ const variant4 = styles.global(({color}) => {
 })
 // if (IS_PROD) return \\"html{color:\\"+color.pink+\\";}\\"
 // return \\"html{color:\\"+color.yellow+\\";}\\"
-const variant5 = styles.global(({color}) => {
+const variant5 = useGlobal(({color}) => {
   if (IS_PROD) {
     return \`html { color: \${color.pink}; }\`
   }
@@ -48,7 +48,7 @@ const variant5 = styles.global(({color}) => {
 // if (IS_PROD) return \\"html{color:\\"+color.lightBlue+\\";}\\"
 // return \\"html{color:\\"+color.yellow+\\";}\\"
 
-const variant6 = styles.global(({color}) => {
+const variant6 = useGlobal(({color}) => {
   if (IS_PROD) {
     return {
       html: {
@@ -63,7 +63,7 @@ const variant6 = styles.global(({color}) => {
   }
 })
 // return \\"html{height\\"+vh+\\";}\\"
-const variant7 = styles.global(({vh}) => {
+const variant7 = useGlobal(({vh}) => {
   return {
     html: {
       height: vh,
@@ -74,36 +74,36 @@ const variant7 = styles.global(({vh}) => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { styles } from '../../../../src/styles'; // styles.global(\\"html{display:flex;}\\")
+import { useGlobal } from '@dash-ui/react'; // useGlobal(\\"html{display:flex;}\\")
 
-const variant = styles.global(\\"html{display:flex;}\\"); // \\"html{display:flex;}\\"
+const variant = useGlobal(\\"html{display:flex;}\\"); // useGlobal(\\"html{display:flex;}\\")
 
-const variant0 = styles.global(\\"html{display:flex;}\\"); // \\"html{color:\\"+color.red+\\";}\\"
+const variant0 = useGlobal(\\"html{display:flex;}\\"); // \\"html{color:\\"+color.red+\\";}\\"
 
-const variant1 = styles.global(({
+const variant1 = useGlobal(({
   color
 }) => \\"html{color:\\" + color.red + \\";}\\"); // {html: {color: color.blue}}
 
-const variant2 = styles.global({
+const variant2 = useGlobal({
   html: {
     color: color.blue
   }
 }); // \\"html{color:\\"+color.yellow+\\";}\\"
 
-const variant3 = styles.global(({
+const variant3 = useGlobal(({
   color
 }) => {
   return \\"html{color:\\" + color.yellow + \\";}\\";
 }); // \\"html{color:\\"+color.green+\\";}\\"
 
-const variant4 = styles.global(({
+const variant4 = useGlobal(({
   color
 }) => {
   return \\"html{\\" + (\\"color:\\" + (color.green + \\";\\") + \\"}\\");
 }); // if (IS_PROD) return \\"html{color:\\"+color.pink+\\";}\\"
 // return \\"html{color:\\"+color.yellow+\\";}\\"
 
-const variant5 = styles.global(({
+const variant5 = useGlobal(({
   color
 }) => {
   if (IS_PROD) {
@@ -114,7 +114,7 @@ const variant5 = styles.global(({
 }); // if (IS_PROD) return \\"html{color:\\"+color.lightBlue+\\";}\\"
 // return \\"html{color:\\"+color.yellow+\\";}\\"
 
-const variant6 = styles.global(({
+const variant6 = useGlobal(({
   color
 }) => {
   if (IS_PROD) {
@@ -124,183 +124,43 @@ const variant6 = styles.global(({
   return \\"html{\\" + (\\"color:\\" + (color.yellow + \\";\\") + \\"}\\");
 }); // return \\"html{height\\"+vh+\\";}\\"
 
-const variant7 = styles.global(({
+const variant7 = useGlobal(({
   vh
 }) => {
   return \\"html{\\" + (\\"height:\\" + (vh + \\";\\") + \\"}\\");
 });"
 `;
 
-exports[`babel-plugin-dash keyframes 1`] = `
-"import {styles} from '../../../../src/styles'
+exports[`babel-plugin-dash use-style 1`] = `
+"import {useStyle} from '@dash-ui/react'
 
-// styles.keyframe(\\"0%{opacity:0;}\\")
-const variant = styles.keyframes\`0% { opacity: 0; } \`
-// \\"0%{opacity:0;}\\"
-const variant0 = styles.keyframes('0% { opacity: 0; } ')
-// \\"0%{opacity:0;}100%{opacity:1;}\\"
-const variant1 = styles.keyframes(
-  () => \`
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1
-    }
-  \`
-)
-// no cahnge
-const variant2 = styles.keyframes({
-  '0%': {
-    opacity: opacity,
-  },
-})
-// \\"0%{opacity:\\"+opacity.none+\\";}100%{opacity:\\"+opacity.some+\\";}\\"
-const variant3 = styles.keyframes(({opacity}) => {
-  return \`
-    0% {
-      opacity: \${opacity.none};
-    }
-    100% {
-      opacity: \${opacity.some};
-    }
-  \`
-})
-// \\"0%{opacity:\\"+opacity.none+\\";}100%{opacity:\\"+opacity.some+\\";}\\"
-const variant4 = styles.keyframes(({opacity}) => {
-  return {
-    '0%': {
-      opacity: opacity.none,
-    },
-    '100%': {
-      opacity: opacity.some,
-    },
-  }
-})
-// if (IS_PROD) return \\"0%{opacity:\\"+opacity.none+\\";}\\"
-// return \\"0%{opacity:\\"+opacity.some+\\";}\\"
-const variant5 = styles.keyframes(({opacity}) => {
-  if (IS_PROD) {
-    return \`0% { opacity: \${opacity.none}; }\`
-  }
-  return \`0% { opacity: \${opacity.some}; }\`
-})
-// if (IS_PROD) return \\"0%{color:\\"+color.lightBlue+\\";}\\"
-// return \\"0%{color:\\"+color.yellow+\\";}\\"
-const variant6 = styles.keyframes(({color}) => {
-  if (IS_PROD) {
-    return {
-      '0%': {
-        color: color.lightBlue,
-      },
-    }
-  }
-  return {
-    '0%': {
-      color: color.yellow,
-    },
-  }
-})
-// return \\"0%{height:\\"+vh+\\";}100%{height:100px;}\\"
-const variant7 = styles.keyframes(({vh}) => {
-  return {
-    '0%': {
-      height: vh,
-    },
-    '100%': {
-      height: 100,
-    },
-  }
-})
-
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-import { styles } from '../../../../src/styles'; // styles.keyframe(\\"0%{opacity:0;}\\")
-
-const variant = styles.keyframes(\\"0%{opacity:0;}\\"); // \\"0%{opacity:0;}\\"
-
-const variant0 = styles.keyframes(\\"0%{opacity:0;}\\"); // \\"0%{opacity:0;}100%{opacity:1;}\\"
-
-const variant1 = styles.keyframes(() => \\"0%{opacity:0;}100%{opacity:1}\\"); // no cahnge
-
-const variant2 = styles.keyframes({
-  '0%': {
-    opacity: opacity
-  }
-}); // \\"0%{opacity:\\"+opacity.none+\\";}100%{opacity:\\"+opacity.some+\\";}\\"
-
-const variant3 = styles.keyframes(({
-  opacity
-}) => {
-  return \\"0%{opacity:\\" + opacity.none + \\";}100%{opacity:\\" + opacity.some + \\";}\\";
-}); // \\"0%{opacity:\\"+opacity.none+\\";}100%{opacity:\\"+opacity.some+\\";}\\"
-
-const variant4 = styles.keyframes(({
-  opacity
-}) => {
-  return \\"0%{\\" + (\\"opacity:\\" + (opacity.none + \\";\\") + \\"}\\") + (\\"100%{\\" + (\\"opacity:\\" + (opacity.some + \\";\\") + \\"}\\"));
-}); // if (IS_PROD) return \\"0%{opacity:\\"+opacity.none+\\";}\\"
-// return \\"0%{opacity:\\"+opacity.some+\\";}\\"
-
-const variant5 = styles.keyframes(({
-  opacity
-}) => {
-  if (IS_PROD) {
-    return \\"0%{opacity:\\" + opacity.none + \\";}\\";
-  }
-
-  return \\"0%{opacity:\\" + opacity.some + \\";}\\";
-}); // if (IS_PROD) return \\"0%{color:\\"+color.lightBlue+\\";}\\"
-// return \\"0%{color:\\"+color.yellow+\\";}\\"
-
-const variant6 = styles.keyframes(({
-  color
-}) => {
-  if (IS_PROD) {
-    return \\"0%{\\" + (\\"color:\\" + (color.lightBlue + \\";\\") + \\"}\\");
-  }
-
-  return \\"0%{\\" + (\\"color:\\" + (color.yellow + \\";\\") + \\"}\\");
-}); // return \\"0%{height:\\"+vh+\\";}100%{height:100px;}\\"
-
-const variant7 = styles.keyframes(({
-  vh
-}) => {
-  return \\"0%{\\" + (\\"height:\\" + (vh + \\";\\") + \\"}\\") + (\\"100%{\\" + (\\"height:100px;\\" + \\"}\\"));
-});"
-`;
-
-exports[`babel-plugin-dash one 1`] = `
-"import {styles} from '../../../../src/styles'
-
+// useStyle(\\"display:flex;\\")
+const variant = useStyle\`display: flex;\`
 // \\"display:flex;\\"
-const variant = styles.one\`display: flex;\`
-// \\"display:flex;\\"
-const variant0 = styles.one('display: flex;')
+const variant0 = useStyle('display: flex;')
 // \\"color:\\"+color.red+\\";\\"
-const variant1 = styles.one(
+const variant1 = useStyle(
   ({color}) => \`
     color: \${color.red};
   \`
 )
 // {color: color.blue}
-const variant2 = styles.one({
+const variant2 = useStyle({
   color: color.blue,
 })
 // \\"color:\\"+color.yellow+\\";\\"
-const variant3 = styles.one(({color}) => {
+const variant3 = useStyle(({color}) => {
   return \`color: \${color.yellow};\`
 })
 // \\"color:\\"+color.green+\\";\\"
-const variant4 = styles.one(({color}) => {
+const variant4 = useStyle(({color}) => {
   return {
     color: color.green,
   }
 })
 // if (IS_PROD) return \\"color:\\"+color.pink+\\";\\"
 // return \\"color:\\"+color.yellow+\\";\\"
-const variant5 = styles.one(({color}) => {
+const variant5 = useStyle(({color}) => {
   if (IS_PROD) {
     return \`color: \${color.pink};\`
   }
@@ -309,7 +169,7 @@ const variant5 = styles.one(({color}) => {
 // if (IS_PROD) return \\"color:\\"+color.lightBlue+\\";\\"
 // return \\"color:\\"+color.yellow+\\";\\"
 
-const variant6 = styles.one(({color}) => {
+const variant6 = useStyle(({color}) => {
   if (IS_PROD) {
     return {
       color: color.lightBlue,
@@ -320,7 +180,7 @@ const variant6 = styles.one(({color}) => {
   }
 })
 // return \\"height\\"+vh+\\";\\"
-const variant7 = styles.one(({vh}) => {
+const variant7 = useStyle(({vh}) => {
   return {
     height: vh,
   }
@@ -329,34 +189,34 @@ const variant7 = styles.one(({vh}) => {
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { styles } from '../../../../src/styles'; // \\"display:flex;\\"
+import { useStyle } from '@dash-ui/react'; // useStyle(\\"display:flex;\\")
 
-const variant = /*#__PURE__*/styles.one(\\"display:flex;\\"); // \\"display:flex;\\"
+const variant = /*#__PURE__*/useStyle(\\"display:flex;\\"); // \\"display:flex;\\"
 
-const variant0 = /*#__PURE__*/styles.one(\\"display:flex;\\"); // \\"color:\\"+color.red+\\";\\"
+const variant0 = /*#__PURE__*/useStyle(\\"display:flex;\\"); // \\"color:\\"+color.red+\\";\\"
 
-const variant1 = /*#__PURE__*/styles.one(({
+const variant1 = /*#__PURE__*/useStyle(({
   color
 }) => \\"color:\\" + color.red + \\";\\"); // {color: color.blue}
 
-const variant2 = /*#__PURE__*/styles.one({
+const variant2 = /*#__PURE__*/useStyle({
   color: color.blue
 }); // \\"color:\\"+color.yellow+\\";\\"
 
-const variant3 = /*#__PURE__*/styles.one(({
+const variant3 = /*#__PURE__*/useStyle(({
   color
 }) => {
   return \\"color:\\" + color.yellow + \\";\\";
 }); // \\"color:\\"+color.green+\\";\\"
 
-const variant4 = /*#__PURE__*/styles.one(({
+const variant4 = /*#__PURE__*/useStyle(({
   color
 }) => {
   return \\"color:\\" + (color.green + \\";\\");
 }); // if (IS_PROD) return \\"color:\\"+color.pink+\\";\\"
 // return \\"color:\\"+color.yellow+\\";\\"
 
-const variant5 = /*#__PURE__*/styles.one(({
+const variant5 = /*#__PURE__*/useStyle(({
   color
 }) => {
   if (IS_PROD) {
@@ -367,7 +227,7 @@ const variant5 = /*#__PURE__*/styles.one(({
 }); // if (IS_PROD) return \\"color:\\"+color.lightBlue+\\";\\"
 // return \\"color:\\"+color.yellow+\\";\\"
 
-const variant6 = /*#__PURE__*/styles.one(({
+const variant6 = /*#__PURE__*/useStyle(({
   color
 }) => {
   if (IS_PROD) {
@@ -377,17 +237,17 @@ const variant6 = /*#__PURE__*/styles.one(({
   return \\"color:\\" + (color.yellow + \\";\\");
 }); // return \\"height\\"+vh+\\";\\"
 
-const variant7 = /*#__PURE__*/styles.one(({
+const variant7 = /*#__PURE__*/useStyle(({
   vh
 }) => {
   return \\"height:\\" + (vh + \\";\\");
 });"
 `;
 
-exports[`babel-plugin-dash styles 1`] = `
-"import {styles} from '../../../../src/styles'
+exports[`babel-plugin-dash use-styles 1`] = `
+"import {useStyles} from '@dash-ui/react'
 
-const cls = styles({
+const cls = useStyles({
   // display:flex;
   default: 'display: flex;',
   // \\"color:\\"+color.red+\\";\\"
@@ -439,8 +299,8 @@ const cls = styles({
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { styles } from '../../../../src/styles';
-const cls = /*#__PURE__*/styles({
+import { useStyles } from '@dash-ui/react';
+const cls = /*#__PURE__*/useStyles({
   // display:flex;
   default: \\"display:flex;\\",
   // \\"color:\\"+color.red+\\";\\"

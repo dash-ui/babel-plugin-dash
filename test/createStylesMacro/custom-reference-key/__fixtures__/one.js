@@ -1,6 +1,8 @@
 import {styles} from '../../../../src/styles'
 
 // "display:flex;"
+const variant = styles.one`display: flex;`
+// "display:flex;"
 const variant0 = styles.one('display: flex;')
 // "color:"+color.red+";"
 const variant1 = styles.one(
