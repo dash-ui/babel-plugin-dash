@@ -6,9 +6,6 @@
 </div>
 
 <p align="center">
-  <a aria-label="Code coverage report" href="https://codecov.io/gh/dash-ui/babel-plugin-dash">
-    <img alt="Code coverage" src="https://img.shields.io/codecov/c/gh/dash-ui/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
-  </a>
   <a aria-label="Build status" href="https://travis-ci.com/dash-ui/babel-plugin-dash">
     <img alt="Build status" src="https://img.shields.io/travis/com/dash-ui/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
   </a>
