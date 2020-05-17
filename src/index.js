@@ -96,11 +96,8 @@ export default function (babel) {
           state,
           babel,
           isBabelMacrosCall: true,
-          isdashCall: true,
+          isDashCall: true,
         })
-        if (!pluginMacros[path.node.source.value].keepImport) {
-          path.remove()
-        }
       },
       Program(path, state) {
         state.dashInstancePaths = (

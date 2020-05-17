@@ -60,14 +60,16 @@ export let createDashMacro = (/*instancePath*/) =>
             path.addComment('leading', '#__PURE__')
 
             for (let arg of path.node.arguments) {
-              for (let i = 0; i < arg.properties.length; i++) {
-                const node = transformExpressionWithStyles(
-                  babel,
-                  arg.properties[i].value
-                )
+              if (arg.properties) {
+                for (let i = 0; i < arg.properties.length; i++) {
+                  const node = transformExpressionWithStyles(
+                    babel,
+                    arg.properties[i].value
+                  )
 
-                if (node) {
-                  arg.properties[i].value = node
+                  if (node) {
+                    arg.properties[i].value = node
+                  }
                 }
               }
             }
@@ -78,76 +80,80 @@ export let createDashMacro = (/*instancePath*/) =>
   })
 
 export let transformExpressionWithStyles = (babel, value) => {
-  let t = babel.types
-  if (t.isTaggedTemplateExpression(value)) {
-    return templateLiteralToString(
-      babel.template.smart(minify(value.quasi))().expression,
-      babel
-    )
-  }
-
-  if (t.isStringLiteral(value)) {
-    return t.stringLiteral(compileStyles(value.value, {}))
-  }
-
-  if (t.isTemplateLiteral(value)) {
-    return templateLiteralToString(
-      babel.template.smart(minify(value))().expression,
-      babel
-    )
-  }
-
-  if (t.isObjectExpression(value)) {
-    return stringifyObject(value, babel)
-  }
-
-  if (t.isFunction(value)) {
-    if (t.isTemplateLiteral(value.body)) {
-      value.body = templateLiteralToString(
-        babel.template.smart(minify(value.body))().expression,
+  try {
+    let t = babel.types
+    if (t.isTaggedTemplateExpression(value)) {
+      return templateLiteralToString(
+        babel.template.smart(minify(value.quasi))().expression,
         babel
       )
-    } else if (t.isObjectExpression(value.body)) {
-      value.body = stringifyObject(
-        value.body,
-        babel,
-        getAllowedIdentifiersFromParams(value.params[0], babel)
-      )
-    } else {
-      const replaceReturn = (maybeBlock) => {
-        if (t.isReturnStatement(maybeBlock)) {
-          const body = maybeBlock.argument
-          if (t.isTemplateLiteral(body)) {
-            maybeBlock.argument = templateLiteralToString(
-              babel.template.smart(minify(body))().expression,
-              babel
-            )
-          } else if (t.isObjectExpression(body)) {
-            maybeBlock.argument = stringifyObject(
-              body,
-              babel,
-              getAllowedIdentifiersFromParams(value.params[0], babel)
-            )
-          } else if (t.isBlockStatement(body)) {
-            replaceReturn(body)
-          }
-        } else if (t.isIfStatement(maybeBlock)) {
-          let consequent = maybeBlock.consequent.body
-
-          for (let i = 0; i < consequent.length; i++)
-            replaceReturn(consequent[i])
-
-          replaceReturn(maybeBlock.alternate)
-        } else if (t.isBlockStatement(maybeBlock)) {
-          const block = maybeBlock
-
-          for (let i = 0; i < block.body.length; i++)
-            replaceReturn(block.body[i])
-        }
-      }
-
-      replaceReturn(value.body)
     }
+
+    if (t.isStringLiteral(value)) {
+      return t.stringLiteral(compileStyles(value.value, {}))
+    }
+
+    if (t.isTemplateLiteral(value)) {
+      return templateLiteralToString(
+        babel.template.smart(minify(value))().expression,
+        babel
+      )
+    }
+
+    if (t.isObjectExpression(value)) {
+      return stringifyObject(value, babel)
+    }
+
+    if (t.isFunction(value)) {
+      if (t.isTemplateLiteral(value.body)) {
+        value.body = templateLiteralToString(
+          babel.template.smart(minify(value.body))().expression,
+          babel
+        )
+      } else if (t.isObjectExpression(value.body)) {
+        value.body = stringifyObject(
+          value.body,
+          babel,
+          getAllowedIdentifiersFromParams(value.params[0], babel)
+        )
+      } else {
+        const replaceReturn = (maybeBlock) => {
+          if (t.isReturnStatement(maybeBlock)) {
+            const body = maybeBlock.argument
+            if (t.isTemplateLiteral(body)) {
+              maybeBlock.argument = templateLiteralToString(
+                babel.template.smart(minify(body))().expression,
+                babel
+              )
+            } else if (t.isObjectExpression(body)) {
+              maybeBlock.argument = stringifyObject(
+                body,
+                babel,
+                getAllowedIdentifiersFromParams(value.params[0], babel)
+              )
+            } else if (t.isBlockStatement(body)) {
+              replaceReturn(body)
+            }
+          } else if (t.isIfStatement(maybeBlock)) {
+            let consequent = maybeBlock.consequent.body
+
+            for (let i = 0; i < consequent.length; i++)
+              replaceReturn(consequent[i])
+
+            replaceReturn(maybeBlock.alternate)
+          } else if (t.isBlockStatement(maybeBlock)) {
+            const block = maybeBlock
+
+            for (let i = 0; i < block.body.length; i++)
+              replaceReturn(block.body[i])
+          }
+        }
+
+        replaceReturn(value.body)
+      }
+    }
+  } catch (err) {
+    return
   }
 }
 
