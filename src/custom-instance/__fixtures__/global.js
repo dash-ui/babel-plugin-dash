@@ -1,4 +1,4 @@
-import styles from '@dash-ui/styles'
+import styles from '../../styles'
 
 // "html{display:flex;}"
 const variant0 = styles.global('html { display: flex; } ')

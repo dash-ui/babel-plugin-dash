@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`babel-plugin-dash global 1`] = `
-"import styles from '@dash-ui/styles'
+"import styles from '../../styles'
 
 // \\"html{display:flex;}\\"
 const variant0 = styles.global('html { display: flex; } ')
@@ -127,7 +127,7 @@ const variant7 = styles.global(({
 `;
 
 exports[`babel-plugin-dash keyframes 1`] = `
-"import styles from '@dash-ui/styles'
+"import styles from '../../styles'
 
 // \\"0%{opacity:0;}\\"
 const variant0 = styles.keyframes('0% { opacity: 0; } ')
@@ -262,7 +262,7 @@ const variant7 = styles.keyframes(({
 `;
 
 exports[`babel-plugin-dash one 1`] = `
-"import styles from '@dash-ui/styles'
+"import styles from '../../styles'
 
 // \\"display:flex;\\"
 const variant0 = styles.one('display: flex;')
@@ -370,7 +370,7 @@ const variant7 = /*#__PURE__*/styles.one(({
 `;
 
 exports[`babel-plugin-dash styles 1`] = `
-"import styles from '@dash-ui/styles'
+"import styles from '../../styles'
 
 const cls = styles({
   // display:flex;
@@ -413,18 +413,10 @@ const cls = styles({
       color: color.yellow,
     }
   },
-  // return \\"height:\\"+vh+\\";\\"
+  // return \\"height\\"+vh+\\";\\"
   vh: ({vh}) => {
     return {
       height: vh,
-    }
-  },
-  // return \\".foo{height:\\"+vh+\\"};\\"
-  vh: ({vh}) => {
-    return {
-      '.foo': {
-        height: vh,
-      },
     }
   },
 })
@@ -477,17 +469,11 @@ const cls = /*#__PURE__*/styles({
 
     return \\"color:\\" + (color.yellow + \\";\\");
   },
-  // return \\"height:\\"+vh+\\";\\"
+  // return \\"height\\"+vh+\\";\\"
   vh: ({
     vh
   }) => {
     return \\"height:\\" + (vh + \\";\\");
-  },
-  // return \\".foo{height:\\"+vh+\\"};\\"
-  vh: ({
-    vh
-  }) => {
-    return \\".foo{\\" + (\\"height:\\" + (vh + \\";\\") + \\"}\\");
   }
 });"
 `;

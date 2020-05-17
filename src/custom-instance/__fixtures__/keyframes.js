@@ -1,4 +1,4 @@
-import styles from '@dash-ui/styles'
+import styles from '../../styles'
 
 // "0%{opacity:0;}"
 const variant0 = styles.keyframes('0% { opacity: 0; } ')
