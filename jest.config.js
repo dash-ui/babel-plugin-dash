@@ -2,11 +2,7 @@ const path = require('path')
 
 module.exports = {
   // testEnvironment: 'jest-environment-jsdom',
-  moduleDirectories: [
-    'node_modules',
-    path.join(__dirname, 'src'),
-    path.join(__dirname, 'test'),
-  ],
+  moduleDirectories: ['node_modules', path.join(__dirname, 'test')],
   testPathIgnorePatterns: ['node_modules', '__fixtures__'],
   moduleNameMapper: {
     'test-utils': path.join(__dirname, 'test/utils.js'),

@@ -1,4 +1,4 @@
-import styles from '../../styles'
+import styles from '../../../../src/styles'
 
 // "0%{opacity:0;}"
 const variant0 = styles.keyframes('0% { opacity: 0; } ')

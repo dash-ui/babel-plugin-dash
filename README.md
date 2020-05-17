@@ -23,11 +23,12 @@
 <pre align="center">npm i babel-plugin-dash</pre>
 <hr>
 
-A babel plugin for [**@dash-ui**](https://github.com/dash-ui).
+A babel plugin for [**dash-ui**](https://github.com/dash-ui).
 
 ## Features
 
 - [x] Minifies styles defined by `styles()`, `styles.one()`, `styles.keyframes()`, and `styles.global()`
+- [x] Minifies styles defined by [`@dash-ui/mq`](https://github.com/dash-ui/mq) instances
 - [x] Transforms style objects to CSS strings for faster runtime compilation and better minification
 - [x] Injects `/*#__PURE__*/` flag comments to mark `styles()` and `styles.one()` for dead code elimination
 
@@ -47,15 +48,40 @@ With a custom styles instance
 ```js
 // babel.config.js
 module.exports = {
-  plugins: [['dash', {instances: ['./src/styles']}]],
+  plugins: [
+    ['dash', {instances: {styles: ['./src/styles']}, mq: ['./src/mq']}],
+  ],
+}
+```
+
+With a custom styles instance and export
+
+```js
+// babel.config.js
+module.exports = {
+  plugins: [
+    [
+      'dash',
+      {
+        instances: {
+          // Transforms based on the `styles` export in `src/dash`
+          // i.e. import {styles} from './dash'
+          styles: {'./src/dash': 'styles'},
+          // Transforms based on the `mq` export in `src/dash`
+          // i.e. import {mq} from './dash'
+          mq: {'./src/dash': 'mq'},
+        },
+      },
+    ],
+  ],
 }
 ```
 
 ## Options
 
-| Option    | Type       | Default               | Description                                                                                                                                                                                                                                                                                                                                                                          |
-| --------- | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| instances | `string[]` | `["@dash-ui/styles"]` | This option allows `babel-plugin-dash` to know which imports to treat as emotion imports and transform as such. This option is only required if you use a custom instance of dash styles created with `createStyles()` or you're importing emotion from somewhere other than the paths above. Relative paths are resolved relative to process.cwd() (the current working directory). |
+| Option    | Type                               | Default                                 | Description                                                                                                                                                                                                                                                                                                                                                                          |
+| --------- | ---------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| instances | `{styles: string[], mq: string[]}` | `{styles: ["@dash-ui/styles"], mq: []}` | This option allows `babel-plugin-dash` to know which imports to treat as emotion imports and transform as such. This option is only required if you use a custom instance of dash styles created with `createStyles()` or you're importing emotion from somewhere other than the paths above. Relative paths are resolved relative to process.cwd() (the current working directory). |
 
 ## Thank you
 

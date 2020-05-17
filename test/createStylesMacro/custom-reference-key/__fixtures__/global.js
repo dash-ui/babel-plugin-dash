@@ -1,4 +1,4 @@
-import styles from '../../styles'
+import {styles} from '../../../../src/styles'
 
 // "html{display:flex;}"
 const variant0 = styles.global('html { display: flex; } ')

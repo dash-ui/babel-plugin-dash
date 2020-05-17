@@ -1,8 +1,10 @@
 import nodePath from 'path'
-import {createDashMacro} from './createDashMacro'
+import {createStylesMacro} from './createStylesMacro'
+import {createMqMacro} from './createMqMacro'
 
 export const macros = {
-  createDashMacro,
+  createStylesMacro,
+  createMqMacro,
 }
 
 const getAbsolutePath = (instancePath, rootPath) => {
@@ -35,16 +37,25 @@ export default function (babel) {
           ? nodePath.dirname(path.hub.file.opts.filename)
           : ''
 
-        if (
-          !state.pluginMacros[path.node.source.value] &&
-          state.dashInstancePaths.indexOf(
-            getInstancePathToCompare(path.node.source.value, dirname)
-          ) !== -1
-        ) {
-          state.pluginMacros[path.node.source.value] = createDashMacro(
-            path.node.source.value
+        if (!state.pluginMacros[path.node.source.value]) {
+          const cmpPath = getInstancePathToCompare(
+            path.node.source.value,
+            dirname
           )
+
+          if (state.dashInstancePaths.styles[cmpPath] !== void 0) {
+            state.pluginMacros[path.node.source.value] = createStylesMacro(
+              state.dashInstancePaths.styles[cmpPath],
+              path.node.source.value
+            )
+          } else if (state.dashInstancePaths.mq[cmpPath] !== void 0) {
+            state.pluginMacros[path.node.source.value] = createMqMacro(
+              state.dashInstancePaths.mq[cmpPath],
+              path.node.source.value
+            )
+          }
         }
+
         let pluginMacros = state.pluginMacros
 
         // most of this is from https://github.com/kentcdodds/babel-plugin-macros/blob/master/src/index.js
@@ -100,14 +111,31 @@ export default function (babel) {
         })
       },
       Program(path, state) {
-        state.dashInstancePaths = (
-          state.opts.instances || []
-        ).map((instancePath) =>
-          getInstancePathToCompare(instancePath, process.cwd())
+        const instances = state.opts.instances || {}
+        state.dashInstancePaths = ['styles', 'mq'].reduce(
+          (acc, instanceType) => {
+            const it = instances[instanceType] || []
+
+            if (Array.isArray(it)) {
+              acc[instanceType] = it.reduce((acc, ip) => {
+                acc[getInstancePathToCompare(ip, process.cwd())] = 'default'
+                return acc
+              }, {})
+            } else if (typeof it === 'object') {
+              acc[instanceType] = Object.keys(it).reduce((acc, ip) => {
+                const referenceKey = it[ip]
+                acc[getInstancePathToCompare(ip, process.cwd())] = referenceKey
+                return acc
+              }, {})
+            }
+
+            return acc
+          },
+          {}
         )
 
         state.pluginMacros = {
-          '@dash-ui/styles': createDashMacro('@dash-ui/styles'),
+          '@dash-ui/styles': createStylesMacro('default', '@dash-ui/styles'),
         }
       },
     },

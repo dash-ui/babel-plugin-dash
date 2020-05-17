@@ -1,4 +1,4 @@
-import styles from '../../styles'
+import styles from '../../../../src/styles'
 
 const cls = styles({
   // display:flex;

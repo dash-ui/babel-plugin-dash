@@ -1,4 +1,4 @@
-import styles from '../../styles'
+import styles from '../../../../src/styles'
 
 // "display:flex;"
 const variant0 = styles.one('display: flex;')
