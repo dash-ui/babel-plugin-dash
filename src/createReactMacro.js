@@ -2,7 +2,7 @@
 import {createMacro} from 'babel-plugin-macros'
 import {transformExpressionWithStyles} from './transform'
 
-export let createReactMacro = (/*instancePath*/) =>
+export const createReactMacro = (/*instancePath*/) =>
   createMacro(function macro({references, state, babel, isDashCall}) {
     if (!isDashCall) {
       state.dashSourceMap = true

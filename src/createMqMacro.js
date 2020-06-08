@@ -2,7 +2,7 @@
 import {createMacro} from 'babel-plugin-macros'
 import {transformExpressionWithStyles} from './transform'
 
-export let createMqMacro = (instanceReferenceKey /*instancePath*/) =>
+export const createMqMacro = (instanceReferenceKey /*instancePath*/) =>
   createMacro(function macro({references, state, babel, isDashCall}) {
     if (!isDashCall) {
       state.dashSourceMap = true

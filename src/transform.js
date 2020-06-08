@@ -1,7 +1,7 @@
 import generate from '@babel/generator'
 import {compileStyles} from '@dash-ui/styles'
 
-export let transformExpressionWithStyles = (babel, value) => {
+export const transformExpressionWithStyles = (babel, value) => {
   try {
     let t = babel.types
     if (t.isTaggedTemplateExpression(value)) {
