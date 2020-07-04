@@ -34,13 +34,15 @@
     "dev": "lundle build -f module,cjs -w",
     "format": "prettier --write \"{,!(node_modules|dist|coverage)/**/}*.{ts,js,md,yml,json}\"",
     "lint": "eslint .",
-    "prepublishOnly": "npm run lint && npm run test && npm run build && npm run format",
+    "prerelease": "npm run validate && npm run build",
+    "release": "git add . && standard-version -a",
     "test": "jest",
     "validate": "npm run lint && npm run test -- --coverage"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -51,6 +53,16 @@
     "**/*.{md,yml,json,eslintrc,prettierrc}": [
       "prettier --write"
     ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -91,9 +103,12 @@
     "bracketSpacing": false
   },
   "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
     "@dash-ui/styles": "^0.5.0",
     "babel-check-duplicated-nodes": "^1.0.0",
     "babel-jest": "latest",
+    "cz-conventional-changelog": "^3.2.0",
     "eslint": "latest",
     "eslint-config-lunde": "latest",
     "husky": "latest",
@@ -101,7 +116,8 @@
     "jest-in-case": "^1.0.2",
     "lint-staged": "latest",
     "lundle": "latest",
-    "prettier": "latest"
+    "prettier": "latest",
+    "standard-version": "^8.0.0"
   },
   "dependencies": {
     "@babel/generator": "^7.9.6",
