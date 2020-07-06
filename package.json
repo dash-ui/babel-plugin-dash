@@ -115,7 +115,7 @@
     "jest": "latest",
     "jest-in-case": "^1.0.2",
     "lint-staged": "latest",
-    "lundle": "latest",
+    "lundle": "^0.4.9",
     "prettier": "latest",
     "standard-version": "^8.0.0"
   },
