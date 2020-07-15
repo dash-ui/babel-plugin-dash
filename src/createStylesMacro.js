@@ -16,7 +16,7 @@ export const createStylesMacro = (instanceReferenceKey /*instancePath*/) =>
         references[referenceKey].reverse().forEach((reference) => {
           if (t.isMemberExpression(reference.parent)) {
             if (
-              ['one', 'global', 'keyframes'].includes(
+              ['one', 'cls', 'global', 'keyframes'].includes(
                 reference.parent.property.name
               )
             ) {
