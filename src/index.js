@@ -141,7 +141,7 @@ export default function (babel) {
         )
 
         state.pluginMacros = {
-          '@dash-ui/styles': createStylesMacro('default', '@dash-ui/styles'),
+          '@dash-ui/styles': createStylesMacro('styles', '@dash-ui/styles'),
           '@dash-ui/react': createReactMacro('@dash-ui/react'),
         }
       },

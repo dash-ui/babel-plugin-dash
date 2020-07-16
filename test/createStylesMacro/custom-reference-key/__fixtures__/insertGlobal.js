@@ -1,11 +1,11 @@
-import styles from '@dash-ui/styles'
+import {styles} from '../../../../src/styles'
 
-// styles.global("html{display:flex;}")
-const variant = styles.global`html { display: flex; }`
+// styles.insertGlobal("html{display:flex;}")
+const variant = styles.insertGlobal`html { display: flex; }`
 // "html{display:flex;}"
-const variant0 = styles.global('html { display: flex; } ')
+const variant0 = styles.insertGlobal('html { display: flex; } ')
 // "html{color:"+color.red+";}"
-const variant1 = styles.global(
+const variant1 = styles.insertGlobal(
   ({color}) => `
     html {
       color: ${color.red};
@@ -13,13 +13,13 @@ const variant1 = styles.global(
   `
 )
 // {html: {color: color.blue}}
-const variant2 = styles.global({
+const variant2 = styles.insertGlobal({
   html: {
     color: color.blue,
   },
 })
 // "html{color:"+color.yellow+";}"
-const variant3 = styles.global(({color}) => {
+const variant3 = styles.insertGlobal(({color}) => {
   return `
     html { 
       color: ${color.yellow}; 
@@ -27,7 +27,7 @@ const variant3 = styles.global(({color}) => {
   `
 })
 // "html{color:"+color.green+";}"
-const variant4 = styles.global(({color}) => {
+const variant4 = styles.insertGlobal(({color}) => {
   return {
     html: {
       color: color.green,
@@ -36,7 +36,7 @@ const variant4 = styles.global(({color}) => {
 })
 // if (IS_PROD) return "html{color:"+color.pink+";}"
 // return "html{color:"+color.yellow+";}"
-const variant5 = styles.global(({color}) => {
+const variant5 = styles.insertGlobal(({color}) => {
   if (IS_PROD) {
     return `html { color: ${color.pink}; }`
   }
@@ -45,7 +45,7 @@ const variant5 = styles.global(({color}) => {
 // if (IS_PROD) return "html{color:"+color.lightBlue+";}"
 // return "html{color:"+color.yellow+";}"
 
-const variant6 = styles.global(({color}) => {
+const variant6 = styles.insertGlobal(({color}) => {
   if (IS_PROD) {
     return {
       html: {
@@ -60,7 +60,7 @@ const variant6 = styles.global(({color}) => {
   }
 })
 // return "html{height"+vh+";}"
-const variant7 = styles.global(({vh}) => {
+const variant7 = styles.insertGlobal(({vh}) => {
   return {
     html: {
       height: vh,

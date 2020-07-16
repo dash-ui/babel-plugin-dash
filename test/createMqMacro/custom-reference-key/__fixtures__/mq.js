@@ -1,4 +1,4 @@
-import styles from '@dash-ui/styles'
+import {styles} from '@dash-ui/styles'
 import {mq} from '../../../../src/mq'
 
 const cls = styles({

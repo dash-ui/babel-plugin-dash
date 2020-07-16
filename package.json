@@ -105,7 +105,7 @@
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
-    "@dash-ui/styles": "^0.5.0",
+    "@dash-ui/styles": "^0.6.1",
     "babel-check-duplicated-nodes": "^1.0.0",
     "babel-jest": "latest",
     "cz-conventional-changelog": "^3.2.0",
@@ -117,7 +117,7 @@
     "lint-staged": "latest",
     "lundle": "^0.4.9",
     "prettier": "latest",
-    "standard-version": "^8.0.0"
+    "standard-version": "^8.0.2"
   },
   "dependencies": {
     "@babel/generator": "^7.9.6",
@@ -127,6 +127,6 @@
     "source-map": "^0.7.3"
   },
   "peerDependencies": {
-    "@dash-ui/styles": ">=0.3.0"
+    "@dash-ui/styles": ">=0.6.1"
   }
 }

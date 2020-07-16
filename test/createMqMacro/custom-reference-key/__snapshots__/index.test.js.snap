@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`babel-plugin-dash/mq mq 1`] = `
-"import styles from '@dash-ui/styles'
+"import {styles} from '@dash-ui/styles'
 import {mq} from '../../../../src/mq'
 
 const cls = styles({
@@ -66,7 +66,7 @@ const cls = styles({
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import styles from '@dash-ui/styles';
+import { styles } from '@dash-ui/styles';
 import { mq } from '../../../../src/mq';
 const cls = /*#__PURE__*/styles({
   default: /*#__PURE__*/mq({

@@ -1,4 +1,4 @@
-import styles from '@dash-ui/styles'
+import {styles} from '@dash-ui/styles'
 
 const cls = styles({
   // display:flex;
