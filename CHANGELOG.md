@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/dash-ui/babel-plugin-dash/compare/v0.3.1...v0.4.0) (2020-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- **deps-dev:** Future versions of this plugin are only compatible with @dash-ui/styles@>=0.6.0
+
+- **deps-dev:** upgrade styles to v0.6.0 ([e8aac4e](https://github.com/dash-ui/babel-plugin-dash/commit/e8aac4e74cb802adbef908b36ce89b6d101af417))
+
 ### [0.3.1](https://github.com/dash-ui/babel-plugin-dash/compare/v0.3.0...v0.3.1) (2020-07-15)
 
 ### Features
