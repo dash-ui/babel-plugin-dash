@@ -1,6 +1,9 @@
 import generate from '@babel/generator'
 import {compileStyles} from '@dash-ui/styles'
 
+const minLeft = /([:;,([{}>~/\s]|\/\*)\s+/g
+const minRight = /\s+([:;,)\]{}>~/!]|\*\/)/g
+
 export const transformExpressionWithStyles = (babel, value) => {
   try {
     let t = babel.types
@@ -12,7 +15,11 @@ export const transformExpressionWithStyles = (babel, value) => {
     }
 
     if (t.isStringLiteral(value)) {
-      return t.stringLiteral(compileStyles(value.value, {}))
+      return t.stringLiteral(
+        compileStyles(value.value, {})
+          .replace(minLeft, '$1')
+          .replace(minRight, '$1')
+      )
     }
 
     if (t.isTemplateLiteral(value)) {
@@ -151,7 +158,11 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
       )
     } else {
       appendString(
-        t.stringLiteral(compileStyles({[key]: property.value.value}, {}))
+        t.stringLiteral(
+          compileStyles({[key]: property.value.value}, {})
+            .replace(minLeft, '$1')
+            .replace(minRight, '$1')
+        )
       )
     }
   }
@@ -169,10 +180,8 @@ export const minify = (value) => {
   value.quasis.forEach((node) => {
     result[`${node.loc.start.line}:${node.loc.start.column}`] = node.value.raw
       .replace(/\s{2,}|\n|\t/g, ' ')
-      .replace(/([:;,([{}>~/])\s+/g, '$1')
-      .replace(/\s+([;,)\]{}>~/!])/g, '$1')
-      .replace(/\/\*\s+/, '/*')
-      .replace(/\s+\*\//, '*/')
+      .replace(minLeft, '$1')
+      .replace(minRight, '$1')
   })
   const keys = Object.keys(result)
   keys.sort((a, b) => {

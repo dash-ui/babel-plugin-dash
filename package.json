@@ -105,7 +105,7 @@
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
-    "@dash-ui/styles": "^0.6.1",
+    "@dash-ui/styles": "^0.7.0",
     "babel-check-duplicated-nodes": "^1.0.0",
     "babel-jest": "latest",
     "cz-conventional-changelog": "^3.2.0",
