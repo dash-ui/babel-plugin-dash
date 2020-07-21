@@ -2,7 +2,7 @@ import generate from '@babel/generator'
 import {compileStyles} from '@dash-ui/styles'
 
 const minLeft = /([:;,([{}>~/\s]|\/\*)\s+/g
-const minRight = /\s+([:;,)\]{}>~/!]|\*\/)/g
+const minRight = /\s+([;,)\]{}>~/!]|\*\/)/g
 
 export const transformExpressionWithStyles = (babel, value) => {
   try {
