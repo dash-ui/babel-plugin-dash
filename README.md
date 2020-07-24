@@ -25,7 +25,7 @@
 - [x] Transforms style objects to CSS strings for faster runtime compilation and better minification
 - [x] Injects `/*#__PURE__*/` flag comments to mark `styles()` and `styles.one()` for dead code elimination
 
-## Quick Start
+## Quick start
 
 Basic usage
 
