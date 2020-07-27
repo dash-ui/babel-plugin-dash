@@ -19,8 +19,8 @@
 
 ## Features
 
-- [x] Minifies styles defined by `styles()`, `styles.one()`, `styles.keyframes()`, and `styles.global()`
-- [x] Minifies styles defined by `useStyles()`, `useStyle()`, and `useGlobal()` when used with [`babel-plugin-dash`](https://github.com/babel-plugin-dash)
+- [x] Minifies styles defined by `styles()`, `styles.one()`, `styles.cls()`, `styles.keyframes()`, and `styles.insertGlobal()`
+- [x] Minifies styles defined by `useGlobal()` when used with [`babel-plugin-dash`](https://github.com/babel-plugin-dash)
 - [x] Minifies styles defined by [`@dash-ui/mq`](https://github.com/dash-ui/mq) instances
 - [x] Transforms style objects to CSS strings for faster runtime compilation and better minification
 - [x] Injects `/*#__PURE__*/` flag comments to mark `styles()` and `styles.one()` for dead code elimination
@@ -74,13 +74,13 @@ module.exports = {
       'dash',
       {
         instances: {
-          // Transforms based on the `styles` export in `src/dash`
-          // i.e. import {styles} from './dash'
-          styles: {'./src/dash': 'styles'},
+          // Transforms based on the `styles` export in `src/styles`
+          // i.e. import {styles} from './styles'
+          styles: {'./src/styles': 'styles'},
           // If using @dash-ui/mq
-          // Transforms based on the `mq` export in `src/dash`
-          // i.e. import {mq} from './dash'
-          mq: {'./src/dash': 'mq'},
+          // Transforms based on the `mq` export in `src/styles`
+          // i.e. import {mq} from './styles'
+          mq: {'./src/styles': 'mq'},
         },
       },
     ],
