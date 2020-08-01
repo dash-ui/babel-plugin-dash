@@ -55,4 +55,20 @@ const cls = styles({
       },
     }
   },
+  // Should minify
+  vh: ({vh}) => {
+    return {
+      '.foo': {
+        height: vh + ' 100vh' + 'foo' + ('foo' + 'bar'),
+      },
+    }
+  },
+  // Should not minify
+  vh: ({vh}) => {
+    return {
+      '.foo': {
+        height: vh + ' 100vh' + 'foo' + ('foo' + (() => {})),
+      },
+    }
+  },
 })

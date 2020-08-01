@@ -115,6 +115,7 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
       (!t.isStringLiteral(property.value) &&
         !t.isNumericLiteral(property.value) &&
         !t.isObjectExpression(property.value) &&
+        !t.isBinaryExpression(property.value) &&
         !t.isIdentifier(property.value))
     ) {
       return node
@@ -152,6 +153,47 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
         )
       )
     } else if (t.isMemberExpression(property.value)) {
+      appendString(
+        t.binaryExpression(
+          '+',
+          t.stringLiteral(`${key}:`),
+          t.binaryExpression('+', property.value, t.stringLiteral(';'))
+        )
+      )
+    } else if (t.isBinaryExpression(property.value)) {
+      const isBinaryDisallowed = (node) => {
+        if (
+          !t.isStringLiteral(node.left) &&
+          !t.isNumericLiteral(node.left) &&
+          !t.isBinaryExpression(node.left) &&
+          !t.isIdentifier(node.left)
+        ) {
+          return true
+        } else if (
+          !t.isStringLiteral(node.right) &&
+          !t.isNumericLiteral(node.right) &&
+          !t.isBinaryExpression(node.right) &&
+          !t.isIdentifier(node.right)
+        ) {
+          return true
+        }
+
+        let childrenDisallowed = false
+
+        if (t.isBinaryExpression(node.left)) {
+          childrenDisallowed = isBinaryDisallowed(node.left)
+        }
+
+        if (childrenDisallowed) return true
+        else if (t.isBinaryExpression(node.right)) {
+          childrenDisallowed = isBinaryDisallowed(node.right)
+        }
+
+        return childrenDisallowed
+      }
+
+      if (isBinaryDisallowed(property.value)) return node
+
       appendString(
         t.binaryExpression(
           '+',
