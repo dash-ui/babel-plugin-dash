@@ -2,11 +2,13 @@ import nodePath from 'path'
 import {createStylesMacro} from './createStylesMacro'
 import {createReactMacro} from './createReactMacro'
 import {createMqMacro} from './createMqMacro'
+import {createResponsiveMacro} from './createResponsiveMacro'
 
 export const macros = {
   createStylesMacro,
   createReactMacro,
   createMqMacro,
+  createResponsiveMacro,
 }
 
 const getAbsolutePath = (instancePath, rootPath) => {
@@ -60,7 +62,7 @@ export default function (babel) {
               path.node.source.value
             )
           } else if (state.dashInstancePaths.responsive[cmpPath] !== void 0) {
-            state.pluginMacros[path.node.source.value] = createMqMacro(
+            state.pluginMacros[path.node.source.value] = createResponsiveMacro(
               state.dashInstancePaths.responsive[cmpPath],
               path.node.source.value
             )
