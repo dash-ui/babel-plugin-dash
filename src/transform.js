@@ -102,8 +102,7 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
 
     if (
       t.isMemberExpression(property.value) &&
-      (allowedIdentifiers.includes(deepObject.name) ||
-        allowedIdentifiers.includes(deepObject?.object.name))
+      allowedIdentifiers.includes(deepObject.name)
     ) {
       // It's funny how this just keeps getting more disgusting
     } else if (
@@ -162,14 +161,37 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
       )
     } else if (t.isBinaryExpression(property.value)) {
       const isBinaryDisallowed = (node) => {
+        let deepObject = node.left.object
+        if (t.isMemberExpression(node.left)) {
+          while (deepObject?.object !== undefined)
+            deepObject = deepObject.object
+        }
+
         if (
+          !(
+            t.isMemberExpression(node.left) &&
+            allowedIdentifiers.includes(deepObject.name)
+          ) &&
           !t.isStringLiteral(node.left) &&
           !t.isNumericLiteral(node.left) &&
           !t.isBinaryExpression(node.left) &&
           !t.isIdentifier(node.left)
         ) {
           return true
-        } else if (
+        }
+
+        deepObject = node.right.object
+
+        if (t.isMemberExpression(node.right)) {
+          while (deepObject?.object !== undefined)
+            deepObject = deepObject.object
+        }
+
+        if (
+          !(
+            t.isMemberExpression(node.right) &&
+            allowedIdentifiers.includes(deepObject.name)
+          ) &&
           !t.isStringLiteral(node.right) &&
           !t.isNumericLiteral(node.right) &&
           !t.isBinaryExpression(node.right) &&

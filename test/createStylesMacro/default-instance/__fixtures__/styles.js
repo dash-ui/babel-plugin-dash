@@ -71,4 +71,40 @@ const cls = styles({
       },
     }
   },
+  whoaNow: ({pad, radius, transition}) => ({
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'grid',
+    gridTemplateColumns: pad.sm + ' max-content 1fr',
+    height: '100%',
+    width: '100%',
+    color: 'currentColor',
+    borderRadius: radius.primary,
+    transitionProperty: 'box-shadow',
+    transitionDuration: transition.duration.fast,
+    transitionTimingFunction: transition.timing.inOut,
+    '> span': {
+      height: '100%',
+      width: '100%',
+      border: '1px solid currentColor',
+      transitionProperty: 'border-color, border-width',
+      transitionDuration: transition.duration.fast,
+      transitionTimingFunction: transition.timing.inOut,
+      ':nth-child(1)': {
+        borderRightWidth: 0,
+        borderRadius: radius.primary + ' 0 0 ' + radius.primary,
+      },
+      ':nth-child(2)': {
+        display: 'flex',
+        alignItems: 'center',
+        borderRightWidth: 0,
+        borderLeftWidth: 0,
+        padding: '0 ' + pad.sm,
+      },
+      ':nth-child(3)': {
+        borderLeftWidth: 0,
+        borderRadius: '0 ' + radius.primary + ' ' + radius.primary + ' 0',
+      },
+    },
+  }),
 })
