@@ -41,32 +41,53 @@ export default function (babel) {
           ? nodePath.dirname(path.hub.file.opts.filename)
           : ''
 
-        if (!state.pluginMacros[path.node.source.value]) {
-          const cmpPath = getInstancePathToCompare(
-            path.node.source.value,
-            dirname
-          )
+        const cmpPath = getInstancePathToCompare(
+          path.node.source.value,
+          dirname
+        )
 
-          if (state.dashInstancePaths.styles[cmpPath] !== void 0) {
-            state.pluginMacros[path.node.source.value] = createStylesMacro(
-              state.dashInstancePaths.styles[cmpPath],
-              path.node.source.value
-            )
-          } else if (state.dashInstancePaths.react[cmpPath] !== void 0) {
-            state.pluginMacros[path.node.source.value] = createReactMacro(
-              path.node.source.value
-            )
-          } else if (state.dashInstancePaths.mq[cmpPath] !== void 0) {
-            state.pluginMacros[path.node.source.value] = createMqMacro(
-              state.dashInstancePaths.mq[cmpPath],
-              path.node.source.value
-            )
-          } else if (state.dashInstancePaths.responsive[cmpPath] !== void 0) {
-            state.pluginMacros[path.node.source.value] = createResponsiveMacro(
-              state.dashInstancePaths.responsive[cmpPath],
-              path.node.source.value
-            )
-          }
+        state.pluginMacros[path.node.source.value] =
+          state.pluginMacros[path.node.source.value] || {}
+
+        if (
+          !state.pluginMacros[path.node.source.value].styles &&
+          state.dashInstancePaths.styles[cmpPath] !== void 0
+        ) {
+          state.pluginMacros[path.node.source.value].styles = createStylesMacro(
+            state.dashInstancePaths.styles[cmpPath],
+            path.node.source.value
+          )
+        }
+
+        if (
+          !state.pluginMacros[path.node.source.value].react &&
+          state.dashInstancePaths.react[cmpPath] !== void 0
+        ) {
+          state.pluginMacros[path.node.source.value].react = createReactMacro(
+            path.node.source.value
+          )
+        }
+
+        if (
+          !state.pluginMacros[path.node.source.value].mq &&
+          state.dashInstancePaths.mq[cmpPath] !== void 0
+        ) {
+          state.pluginMacros[path.node.source.value].mq = createMqMacro(
+            state.dashInstancePaths.mq[cmpPath],
+            path.node.source.value
+          )
+        }
+
+        if (
+          !state.pluginMacros[path.node.source.value].responsive &&
+          state.dashInstancePaths.responsive[cmpPath] !== void 0
+        ) {
+          state.pluginMacros[
+            path.node.source.value
+          ].responsive = createResponsiveMacro(
+            state.dashInstancePaths.responsive[cmpPath],
+            path.node.source.value
+          )
         }
 
         let pluginMacros = state.pluginMacros
@@ -114,13 +135,14 @@ export default function (babel) {
         state.file.scope.path.traverse({
           Identifier() {},
         })
-
-        pluginMacros[path.node.source.value]({
-          references: referencePathsByImportName,
-          state,
-          babel,
-          isBabelMacrosCall: true,
-          isDashCall: true,
+        Object.keys(pluginMacros[path.node.source.value]).forEach((type) => {
+          pluginMacros[path.node.source.value][type]({
+            references: referencePathsByImportName,
+            state,
+            babel,
+            isBabelMacrosCall: true,
+            isDashCall: true,
+          })
         })
       },
       Program(path, state) {
@@ -150,8 +172,12 @@ export default function (babel) {
         }, {})
 
         state.pluginMacros = {
-          '@dash-ui/styles': createStylesMacro('styles', '@dash-ui/styles'),
-          '@dash-ui/react': createReactMacro('@dash-ui/react'),
+          '@dash-ui/styles': {
+            styles: createStylesMacro('styles', '@dash-ui/styles'),
+          },
+          '@dash-ui/react': {
+            react: createReactMacro('@dash-ui/react'),
+          },
         }
       },
     },

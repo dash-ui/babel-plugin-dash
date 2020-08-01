@@ -13,11 +13,8 @@ export const createReactMacro = (/*instancePath*/) =>
     Object.keys(references).forEach((referenceKey) => {
       references[referenceKey].reverse().forEach((reference) => {
         // let runtimeNode = addNamed(state.file.path, referenceKey, instancePath)
-        if (['useGlobal', 'useStyle'].includes(referenceKey)) {
+        if (['useGlobal'].includes(referenceKey)) {
           const path = reference
-          if (referenceKey === 'useStyle') {
-            path.addComment('leading', '#__PURE__')
-          }
 
           if (t.isTaggedTemplateExpression(path.parent)) {
             const node = transformExpressionWithStyles(babel, path.parent)
@@ -37,25 +34,6 @@ export const createReactMacro = (/*instancePath*/) =>
 
               if (node) {
                 ppath.arguments[i] = node
-              }
-            }
-          }
-        } else if (referenceKey === 'useStyles') {
-          const path = reference
-          // reference.replaceWith(t.cloneDeep(runtimeNode))
-          path.addComment('leading', '#__PURE__')
-
-          for (let arg of path.parent.arguments) {
-            if (arg.properties) {
-              for (let i = 0; i < arg.properties.length; i++) {
-                const node = transformExpressionWithStyles(
-                  babel,
-                  arg.properties[i].value
-                )
-
-                if (node) {
-                  arg.properties[i].value = node
-                }
               }
             }
           }
