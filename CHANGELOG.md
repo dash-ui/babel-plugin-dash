@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.9](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.8...v0.4.9) (2020-08-01)
+
+### Bug Fixes
+
+- **transform:** fix keys not being transformed to css case ([7b88ef5](https://github.com/dash-ui/babel-plugin-dash/commit/7b88ef5ee123a1a1924cd3a04c8dd38d2b4c00bd))
+
 ### [0.4.8](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.7...v0.4.8) (2020-08-01)
 
 ### Bug Fixes
