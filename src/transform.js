@@ -117,7 +117,7 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
       return node
     }
 
-    let key = property.key.name || property.key.value
+    let key = cssCase(property.key.name || property.key.value)
     if (t.isObjectExpression(property.value)) {
       let simplifiedChild = stringifyObject(
         property.value,
@@ -343,3 +343,11 @@ const getAllowedIdentifiersFromParams = (params, babel) => {
 
   return allowedIdentifiers
 }
+
+const cssCaseRe = /[A-Z]|^ms/g
+const caseCache = {}
+// We cache the case transformations below because the cache
+// will grow to a predictable size and the regex is slowwwww
+const cssCase = (string) =>
+  caseCache[string] ||
+  (caseCache[string] = string.replace(cssCaseRe, '-$&').toLowerCase())
