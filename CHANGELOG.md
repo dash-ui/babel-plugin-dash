@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.3...v0.4.4) (2020-08-01)
+
+### Bug Fixes
+
+- fix responsive macro ([9ec7737](https://github.com/dash-ui/babel-plugin-dash/commit/9ec773755d20091977a9d50b0bde079e9f246b63))
+
 ### [0.4.3](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.2...v0.4.3) (2020-08-01)
 
 ### Features
