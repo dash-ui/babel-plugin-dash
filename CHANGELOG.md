@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.8](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.7...v0.4.8) (2020-08-01)
+
+### Bug Fixes
+
+- **transform:** handle more object stringification cases ([34b512c](https://github.com/dash-ui/babel-plugin-dash/commit/34b512c0f8b18a028d025af722854112a695ea04))
+
 ### [0.4.7](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.6...v0.4.7) (2020-08-01)
 
 ### Bug Fixes

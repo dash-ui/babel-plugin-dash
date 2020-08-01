@@ -613,6 +613,18 @@ const cls = styles({
     fontSize: font.size.xs,
     transform: \`translateY(-1.618em)\`,
   }),
+
+  hasValue: ({font}) => ({
+    fontWeight: 400,
+    fontSize: font.size.xs,
+    transform: \`translateY(-1.618em)\` + foo('bar'),
+  }),
+
+  hasValue3: ({font}) => ({
+    fontWeight: 400,
+    fontSize: font.size.xs,
+    transform: foo('bar'),
+  }),
 })
 
 
@@ -702,6 +714,12 @@ const cls = /*#__PURE__*/styles({
   }) => \\"boxShadow:\\" + (elevation.md + \\";\\") + (\\"> span{\\" + (\\"border-bottom-width:2px;\\" + \\"}\\")),
   hasValue: ({
     font
-  }) => \\"font-weight:400;\\" + (\\"fontSize:\\" + (font.size.xs + \\";\\")) + (\\"transform:\\" + (\\"translateY(-1.618em)\\" + \\";\\"))
+  }) => \\"font-weight:400;\\" + (\\"fontSize:\\" + (font.size.xs + \\";\\")) + (\\"transform:\\" + (\\"translateY(-1.618em)\\" + \\";\\")),
+  hasValue: ({
+    font
+  }) => \\"font-weight:400;\\" + (\\"fontSize:\\" + (font.size.xs + \\";\\")) + (\\"transform:\\" + (\`translateY(-1.618em)\` + foo('bar') + \\";\\")),
+  hasValue3: ({
+    font
+  }) => \\"font-weight:400;\\" + (\\"fontSize:\\" + (font.size.xs + \\";\\")) + (\\"transform:\\" + (foo('bar') + \\";\\"))
 });"
 `;
