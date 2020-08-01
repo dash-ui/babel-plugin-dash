@@ -95,12 +95,15 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
         ? right
         : t.binaryExpression('+', finalString, right)
   }
-
   for (let i = 0; i < node.properties.length; i++) {
     let property = node.properties[i]
+    let deepObject = property.value.object
+    while (deepObject?.object !== undefined) deepObject = deepObject.object
+
     if (
       t.isMemberExpression(property.value) &&
-      allowedIdentifiers.includes(property.value.object.name)
+      (allowedIdentifiers.includes(deepObject.name) ||
+        allowedIdentifiers.includes(deepObject?.object.name))
     ) {
       // It's funny how this just keeps getting more disgusting
     } else if (

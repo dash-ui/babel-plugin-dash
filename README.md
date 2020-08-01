@@ -22,6 +22,7 @@
 - [x] Minifies styles defined by `styles()`, `styles.one()`, `styles.cls()`, `styles.keyframes()`, and `styles.insertGlobal()`
 - [x] Minifies styles defined by `useGlobal()` when used with [`babel-plugin-dash`](https://github.com/babel-plugin-dash)
 - [x] Minifies styles defined by [`@dash-ui/mq`](https://github.com/dash-ui/mq) instances
+- [x] Minifies styles defined by [`@dash-ui/responsive`](https://github.com/dash-ui/responsive) instances
 - [x] Transforms style objects to CSS strings for faster runtime compilation and better minification
 - [x] Injects `/*#__PURE__*/` flag comments to mark `styles()` and `styles.one()` for dead code elimination
 
@@ -57,6 +58,10 @@ module.exports = {
           // Transforms based on the `default` export in `src/mq`
           // i.e. import mq from './mq'
           mq: ['./src/mq'],
+          // If using @dash-ui/responsive
+          // Transforms based on the `default` export in `src/responsiveStyles`
+          // i.e. import responsiveStyles from './responsiveStyles'
+          responsive: ['./src/responsiveStyles'],
         },
       },
     ],
@@ -81,6 +86,10 @@ module.exports = {
           // Transforms based on the `mq` export in `src/styles`
           // i.e. import {mq} from './styles'
           mq: {'./src/styles': 'mq'},
+          // If using @dash-ui/mq
+          // Transforms based on the `responsiveStyles` export in `src/styles`
+          // i.e. import {responsiveStyles} from './styles'
+          responsive: {'./src/styles': 'responsiveStyles'},
         },
       },
     ],

@@ -41,6 +41,12 @@ const cls = styles({
       color: color.yellow,
     }
   },
+  // return "color:"+color.font.yellow+";"
+  colorFontYellow: ({color}) => {
+    return {
+      color: color.font.bath.yellow,
+    }
+  },
   // return "height"+vh+";"
   vh: ({vh}) => {
     return {

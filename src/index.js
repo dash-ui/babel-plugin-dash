@@ -59,6 +59,11 @@ export default function (babel) {
               state.dashInstancePaths.mq[cmpPath],
               path.node.source.value
             )
+          } else if (state.dashInstancePaths.responsive[cmpPath] !== void 0) {
+            state.pluginMacros[path.node.source.value] = createMqMacro(
+              state.dashInstancePaths.responsive[cmpPath],
+              path.node.source.value
+            )
           }
         }
 
@@ -118,27 +123,29 @@ export default function (babel) {
       },
       Program(path, state) {
         const instances = state.opts.instances || {}
-        state.dashInstancePaths = ['styles', 'mq', 'react'].reduce(
-          (acc, instanceType) => {
-            const it = instances[instanceType] || []
+        state.dashInstancePaths = [
+          'styles',
+          'mq',
+          'responsive',
+          'react',
+        ].reduce((acc, instanceType) => {
+          const it = instances[instanceType] || []
 
-            if (Array.isArray(it)) {
-              acc[instanceType] = it.reduce((acc, ip) => {
-                acc[getInstancePathToCompare(ip, process.cwd())] = 'default'
-                return acc
-              }, {})
-            } else if (typeof it === 'object') {
-              acc[instanceType] = Object.keys(it).reduce((acc, ip) => {
-                const referenceKey = it[ip]
-                acc[getInstancePathToCompare(ip, process.cwd())] = referenceKey
-                return acc
-              }, {})
-            }
+          if (Array.isArray(it)) {
+            acc[instanceType] = it.reduce((acc, ip) => {
+              acc[getInstancePathToCompare(ip, process.cwd())] = 'default'
+              return acc
+            }, {})
+          } else if (typeof it === 'object') {
+            acc[instanceType] = Object.keys(it).reduce((acc, ip) => {
+              const referenceKey = it[ip]
+              acc[getInstancePathToCompare(ip, process.cwd())] = referenceKey
+              return acc
+            }, {})
+          }
 
-            return acc
-          },
-          {}
-        )
+          return acc
+        }, {})
 
         state.pluginMacros = {
           '@dash-ui/styles': createStylesMacro('styles', '@dash-ui/styles'),
