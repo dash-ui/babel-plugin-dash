@@ -624,6 +624,10 @@ const cls = styles({
     fontWeight: 400,
     fontSize: font.size.xs,
     transform: foo('bar'),
+    '.Last-Time': {
+      foo: 'bar',
+    },
+    '--foo': 'bar',
   }),
 })
 
@@ -720,6 +724,6 @@ const cls = /*#__PURE__*/styles({
   }) => \\"font-weight:400px;\\" + (\\"font-size:\\" + (font.size.xs + \\";\\")) + (\\"transform:\\" + (\`translateY(-1.618em)\` + foo('bar') + \\";\\")),
   hasValue3: ({
     font
-  }) => \\"font-weight:400px;\\" + (\\"font-size:\\" + (font.size.xs + \\";\\")) + (\\"transform:\\" + (foo('bar') + \\";\\"))
+  }) => \\"font-weight:400px;\\" + (\\"font-size:\\" + (font.size.xs + \\";\\")) + (\\"transform:\\" + (foo('bar') + \\";\\")) + (\\".Last-Time{\\" + (\\"foo:bar;\\" + \\"}\\")) + \\"--foo:bar;\\"
 });"
 `;

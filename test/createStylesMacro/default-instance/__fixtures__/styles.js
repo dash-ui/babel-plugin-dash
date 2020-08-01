@@ -136,5 +136,9 @@ const cls = styles({
     fontWeight: 400,
     fontSize: font.size.xs,
     transform: foo('bar'),
+    '.Last-Time': {
+      foo: 'bar',
+    },
+    '--foo': 'bar',
   }),
 })

@@ -117,7 +117,10 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
       return node
     }
 
-    let key = cssCase(property.key.name || property.key.value)
+    let key = property.key.name || property.key.value
+    const isCustom = key.charCodeAt(1) === 45
+    key = !isCustom ? cssCase(key) : key
+
     if (t.isObjectExpression(property.value)) {
       let simplifiedChild = stringifyObject(
         property.value,
@@ -136,7 +139,7 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
       appendString(
         t.binaryExpression(
           '+',
-          t.stringLiteral(`${key}{`),
+          t.stringLiteral(`${property.key.name || property.key.value}{`),
           t.binaryExpression('+', simplifiedChild, t.stringLiteral('}'))
         )
       )
