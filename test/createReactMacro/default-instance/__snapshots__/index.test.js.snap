@@ -84,11 +84,7 @@ const variant1 = useGlobal(({
   color
 }) => \\"html{color:\\" + color.red + \\";}\\"); // {html: {color: color.blue}}
 
-const variant2 = useGlobal({
-  html: {
-    color: color.blue
-  }
-}); // \\"html{color:\\"+color.yellow+\\";}\\"
+const variant2 = useGlobal(\\"html{\\" + (\\"color:\\" + (color.blue + \\";\\") + \\"}\\")); // \\"html{color:\\"+color.yellow+\\";}\\"
 
 const variant3 = useGlobal(({
   color

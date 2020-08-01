@@ -100,21 +100,18 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
     let deepObject = property.value.object
     while (deepObject?.object !== undefined) deepObject = deepObject.object
 
-    if (
-      t.isMemberExpression(property.value) &&
-      allowedIdentifiers.includes(deepObject.name)
-    ) {
+    if (t.isMemberExpression(property.value)) {
       // It's funny how this just keeps getting more disgusting
     } else if (
       !t.isObjectProperty(property) ||
       property.computed ||
-      (t.isIdentifier(property.value) &&
-        !allowedIdentifiers.includes(property.value.name)) ||
       (!t.isIdentifier(property.key) && !t.isStringLiteral(property.key)) ||
       (!t.isStringLiteral(property.value) &&
         !t.isNumericLiteral(property.value) &&
+        !t.isTemplateLiteral(property.value) &&
         !t.isObjectExpression(property.value) &&
         !t.isBinaryExpression(property.value) &&
+        !t.isCallExpression(property.value) &&
         !t.isIdentifier(property.value))
     ) {
       return node
@@ -159,6 +156,29 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
           t.binaryExpression('+', property.value, t.stringLiteral(';'))
         )
       )
+    } else if (t.isCallExpression(property.value)) {
+      appendString(
+        t.binaryExpression(
+          '+',
+          t.stringLiteral(`${key}:`),
+          t.binaryExpression('+', property.value, t.stringLiteral(';'))
+        )
+      )
+    } else if (t.isTemplateLiteral(property.value)) {
+      appendString(
+        t.binaryExpression(
+          '+',
+          t.stringLiteral(`${key}:`),
+          t.binaryExpression(
+            '+',
+            templateLiteralToString(
+              babel.template.smart(minify(property.value))().expression,
+              babel
+            ),
+            t.stringLiteral(';')
+          )
+        )
+      )
     } else if (t.isBinaryExpression(property.value)) {
       const isBinaryDisallowed = (node) => {
         let deepObject = node.left.object
@@ -175,6 +195,8 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
           !t.isStringLiteral(node.left) &&
           !t.isNumericLiteral(node.left) &&
           !t.isBinaryExpression(node.left) &&
+          !t.isTemplateLiteral(node.left) &&
+          !t.isCallExpression(node.left) &&
           !t.isIdentifier(node.left)
         ) {
           return true
@@ -195,6 +217,8 @@ export function stringifyObject(node, babel, allowedIdentifiers = []) {
           !t.isStringLiteral(node.right) &&
           !t.isNumericLiteral(node.right) &&
           !t.isBinaryExpression(node.right) &&
+          !t.isTemplateLiteral(node.right) &&
+          !t.isCallExpression(node.right) &&
           !t.isIdentifier(node.right)
         ) {
           return true

@@ -68,9 +68,7 @@ const variant1 = styles.cls(({
   color
 }) => \\"color:\\" + color.red + \\";\\"); // {color: color.blue}
 
-const variant2 = styles.cls({
-  color: color.blue
-}); // \\"color:\\"+color.yellow+\\";\\"
+const variant2 = styles.cls(\\"color:\\" + (color.blue + \\";\\")); // \\"color:\\"+color.yellow+\\";\\"
 
 const variant3 = styles.cls(({
   color
@@ -197,11 +195,7 @@ const variant1 = styles.insertGlobal(({
   color
 }) => \\"html{color:\\" + color.red + \\";}\\"); // {html: {color: color.blue}}
 
-const variant2 = styles.insertGlobal({
-  html: {
-    color: color.blue
-  }
-}); // \\"html{color:\\"+color.yellow+\\";}\\"
+const variant2 = styles.insertGlobal(\\"html{\\" + (\\"color:\\" + (color.blue + \\";\\") + \\"}\\")); // \\"html{color:\\"+color.yellow+\\";}\\"
 
 const variant3 = styles.insertGlobal(({
   color
@@ -337,11 +331,7 @@ const variant0 = styles.keyframes(\\"0%{opacity:0;}\\"); // \\"0%{opacity:0;}100
 
 const variant1 = styles.keyframes(() => \\"0%{opacity:0;}100%{opacity:1}\\"); // no cahnge
 
-const variant2 = styles.keyframes({
-  '0%': {
-    opacity: opacity
-  }
-}); // \\"0%{opacity:\\"+opacity.none+\\";}100%{opacity:\\"+opacity.some+\\";}\\"
+const variant2 = styles.keyframes(\\"0%{\\" + (\\"opacity:\\" + (opacity + \\";\\") + \\"}\\")); // \\"0%{opacity:\\"+opacity.none+\\";}100%{opacity:\\"+opacity.some+\\";}\\"
 
 const variant3 = styles.keyframes(({
   opacity
@@ -452,9 +442,7 @@ const variant1 = /*#__PURE__*/styles.one(({
   color
 }) => \\"color:\\" + color.red + \\";\\"); // {color: color.blue}
 
-const variant2 = /*#__PURE__*/styles.one({
-  color: color.blue
-}); // \\"color:\\"+color.yellow+\\";\\"
+const variant2 = /*#__PURE__*/styles.one(\\"color:\\" + (color.blue + \\";\\")); // \\"color:\\"+color.yellow+\\";\\"
 
 const variant3 = /*#__PURE__*/styles.one(({
   color
