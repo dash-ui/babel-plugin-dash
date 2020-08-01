@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.4...v0.4.5) (2020-08-01)
+
+### Bug Fixes
+
+- fix issue where multiple exports per file couldn't be used ([1014c24](https://github.com/dash-ui/babel-plugin-dash/commit/1014c245f1e9f197dcd4ff616794c42ffe58d8a5))
+
 ### [0.4.4](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.3...v0.4.4) (2020-08-01)
 
 ### Bug Fixes
