@@ -19,10 +19,10 @@
 
 ## Features
 
-- [x] Minifies styles defined by `styles()`, `styles.one()`, `styles.cls()`, `styles.keyframes()`, and `styles.insertGlobal()`
-- [x] Minifies styles defined by `useGlobal()` when used with [`babel-plugin-dash`](https://github.com/babel-plugin-dash)
-- [x] Minifies styles defined by [`@dash-ui/mq`](https://github.com/dash-ui/mq) instances
-- [x] Minifies styles defined by [`@dash-ui/responsive`](https://github.com/dash-ui/responsive) instances
+- [x] Minifies styles created with `styles()`, `styles.one()`, `styles.cls()`, `styles.keyframes()`, and `styles.insertGlobal()`
+- [x] Minifies styles created with `useGlobal()` when used with [`babel-plugin-dash`](https://github.com/babel-plugin-dash)
+- [x] Minifies styles created with [`@dash-ui/mq`](https://github.com/dash-ui/mq) instances
+- [x] Minifies styles created with [`@dash-ui/responsive`](https://github.com/dash-ui/responsive) instances
 - [x] Transforms style objects to CSS strings for faster runtime compilation and better minification
 - [x] Injects `/*#__PURE__*/` flag comments to mark `styles()` and `styles.one()` for dead code elimination
 
