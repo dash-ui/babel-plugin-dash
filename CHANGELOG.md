@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.11](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.10...v0.4.11) (2020-08-09)
+
+### Features
+
+- **createresponsivemacro.js:** add support for latest @dash-ui/responsive ([f4f9084](https://github.com/dash-ui/babel-plugin-dash/commit/f4f9084cd338be7bf8280c7354b3246d393515da))
+
 ### [0.4.10](https://github.com/dash-ui/babel-plugin-dash/compare/v0.4.9...v0.4.10) (2020-08-01)
 
 ### Bug Fixes
