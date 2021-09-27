@@ -1,4 +1,4 @@
 // import {addNamed} from '@babel/helper-module-imports'
-import {createStylesMacro} from './createStylesMacro'
+import { createStylesMacro } from "./createStylesMacro";
 
-export const createResponsiveMacro = createStylesMacro
+export const createResponsiveMacro = createStylesMacro;

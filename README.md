@@ -1,13 +1,16 @@
-<hr>
-  <br/>
-  <img src='https://github.com/dash-ui/styles/raw/master/assets/logo.png'/>
-  <blockquote>A babel plugin for <a href="https://github.com/dash-ui/styles">dash-ui</a></blockquote>
-  
-  <pre>npm i -D babel-plugin-dash</pre>
-  <br/>
+<hr/>
 
-  <a aria-label="Build status" href="https://travis-ci.com/dash-ui/babel-plugin-dash">
-    <img alt="Build status" src="https://img.shields.io/travis/com/dash-ui/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
+<img src='https://github.com/dash-ui/styles/raw/main/assets/logo.png'/>
+
+> A babel plugin for @dash-ui
+
+```sh
+npm i -D babel-plugin-dash
+```
+
+<p>
+  <a aria-label="Build status" href="https://github.com/dash-ui/babel-plugin-dash/actions/workflows/release.yml">
+    <img alt="Build status" src="https://img.shields.io/github/workflow/status/dash-ui/babel-plugin-dash/release/main?style=for-the-badge&labelColor=24292e">
   </a>
   <a aria-label="NPM version" href="https://www.npmjs.com/package/babel-plugin-dash">
     <img alt="NPM Version" src="https://img.shields.io/npm/v/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
@@ -15,7 +18,9 @@
   <a aria-label="License" href="https://jaredlunde.mit-license.org/">
     <img alt="MIT License" src="https://img.shields.io/npm/l/babel-plugin-dash?style=for-the-badge&labelColor=24292e">
   </a>
-<hr>
+</p>
+
+---
 
 ## Features
 
@@ -33,8 +38,8 @@ Basic usage
 ```js
 // babel.config.js
 module.exports = {
-  plugins: ['dash'],
-}
+  plugins: ["dash"],
+};
 ```
 
 With a custom styles instance
@@ -44,29 +49,29 @@ With a custom styles instance
 module.exports = {
   plugins: [
     [
-      'dash',
+      "dash",
       {
         instances: {
           // Transforms based on the `default` export in `src/styles`
           // i.e. import styles from './styles'
-          styles: ['./src/styles'],
+          styles: ["./src/styles"],
           // If using babel-plugin-dash
           // Transforms based on the named exports in `src/react-styles`
           // i.e. import {useStyle} from './react-styles'
-          react: ['./src/react-styles'],
+          react: ["./src/react-styles"],
           // If using @dash-ui/mq
           // Transforms based on the `default` export in `src/mq`
           // i.e. import mq from './mq'
-          mq: ['./src/mq'],
+          mq: ["./src/mq"],
           // If using @dash-ui/responsive
           // Transforms based on the `default` export in `src/responsiveStyles`
           // i.e. import responsiveStyles from './responsiveStyles'
-          responsive: ['./src/responsiveStyles'],
+          responsive: ["./src/responsiveStyles"],
         },
       },
     ],
   ],
-}
+};
 ```
 
 With a custom styles instance and named export
@@ -76,25 +81,25 @@ With a custom styles instance and named export
 module.exports = {
   plugins: [
     [
-      'dash',
+      "dash",
       {
         instances: {
           // Transforms based on the `styles` export in `src/styles`
           // i.e. import {styles} from './styles'
-          styles: {'./src/styles': 'styles'},
+          styles: { "./src/styles": "styles" },
           // If using @dash-ui/mq
           // Transforms based on the `mq` export in `src/styles`
           // i.e. import {mq} from './styles'
-          mq: {'./src/styles': 'mq'},
+          mq: { "./src/styles": "mq" },
           // If using @dash-ui/mq
           // Transforms based on the `responsiveStyles` export in `src/styles`
           // i.e. import {responsiveStyles} from './styles'
-          responsive: {'./src/styles': 'responsiveStyles'},
+          responsive: { "./src/styles": "responsiveStyles" },
         },
       },
     ],
   ],
-}
+};
 ```
 
 ## Options

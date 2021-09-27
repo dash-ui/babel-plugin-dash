@@ -1,18 +1,16 @@
 {
   "name": "babel-plugin-dash",
   "version": "0.4.11",
-  "homepage": "https://github.com/dash-ui/babel-plugin-dash#readme",
-  "repository": "github:dash-ui/babel-plugin-dash",
-  "bugs": "https://github.com/dash-ui/babel-plugin-dash/issues",
-  "author": "Jared Lunde <jared.lunde@gmail.com> (https://jaredLunde.com)",
-  "license": "MIT",
-  "description": "A babel plugin for dash-ui",
+  "description": "A babel plugin for @dash-ui",
   "keywords": [
     "babel plugin dash"
   ],
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
-  "source": "src/index.js",
+  "homepage": "https://github.com/dash-ui/babel-plugin-dash#readme",
+  "bugs": "https://github.com/dash-ui/babel-plugin-dash/issues",
+  "repository": "github:dash-ui/babel-plugin-dash",
+  "license": "MIT",
+  "author": "Jared Lunde <jared.lunde@gmail.com> (https://jaredlunde.com/)",
+  "sideEffects": false,
   "exports": {
     ".": {
       "browser": "./dist/module/index.js",
@@ -24,39 +22,34 @@
     "./package.json": "./package.json",
     "./": "./"
   },
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "source": "src/index.js",
   "files": [
     "/dist",
     "/src"
   ],
-  "sideEffects": false,
   "scripts": {
     "build": "lundle build",
     "dev": "lundle build -f module,cjs -w",
     "format": "prettier --write \"{,!(node_modules|dist|coverage)/**/}*.{ts,js,md,yml,json}\"",
     "lint": "eslint .",
-    "prerelease": "npm run validate && npm run build",
-    "release": "git add . && standard-version -a",
+    "prepare": "husky install",
     "test": "jest",
-    "validate": "npm run lint && npm run test -- --coverage"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "**/*.js": [
-      "eslint",
-      "prettier --write"
-    ],
-    "**/*.{md,yml,json,eslintrc,prettierrc}": [
-      "prettier --write"
-    ]
+    "validate": "pnpm run lint && pnpm run test -- --coverage"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{md,yml,json,eslintrc,prettierrc}": [
+      "prettier --write"
     ]
   },
   "config": {
@@ -73,51 +66,56 @@
     "node_modules",
     "coverage",
     "dist",
+    "/types",
     "test",
     "*.config.js"
   ],
   "jest": {
-    "moduleDirectories": [
-      "node_modules",
-      "test"
-    ],
-    "testPathIgnorePatterns": [
-      "node_modules",
-      "__fixtures__"
-    ],
-    "moduleNameMapper": {
-      "test-utils": "<rootDir>/test/utils.js"
-    },
     "collectCoverageFrom": [
       "**/src/**/*.js",
       "!**/__fixtures__/*"
     ],
+    "globals": {
+      "__DEV__": true
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src",
+      "test"
+    ],
+    "moduleNameMapper": {
+      "test-utils": "<rootDir>/test/utils.js"
+    },
     "setupFilesAfterEnv": [
       "./test/setup.js"
     ],
-    "snapshotResolver": "./test/resolve-snapshot.js"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "bracketSpacing": false
+    "snapshotResolver": "./test/resolve-snapshot.js",
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)test.js",
+      "<rootDir>/test/**/?(*.)test.js"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "__fixtures__"
+    ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^9.0.1",
-    "@commitlint/config-conventional": "^9.0.1",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
     "@dash-ui/styles": "^0.8.0",
+    "@semantic-release/changelog": "^6.0.0",
+    "@semantic-release/git": "^10.0.0",
     "babel-check-duplicated-nodes": "^1.0.0",
     "babel-jest": "latest",
-    "cz-conventional-changelog": "^3.2.0",
+    "cz-conventional-changelog": "latest",
     "eslint": "latest",
     "eslint-config-lunde": "latest",
     "husky": "latest",
     "jest": "latest",
     "jest-in-case": "^1.0.2",
     "lint-staged": "latest",
-    "lundle": "^0.4.9",
-    "prettier": "latest",
-    "standard-version": "^8.0.2"
+    "lundle": "latest",
+    "prettier": "latest"
   },
   "dependencies": {
     "@babel/generator": "^7.9.6",
@@ -128,5 +126,30 @@
   },
   "peerDependencies": {
     "@dash-ui/styles": ">=0.6.1"
+  },
+  "release": {
+    "branches": [
+      "main",
+      "next",
+      "alpha"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "types",
+            "CHANGELOG.md",
+            "package.json"
+          ],
+          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
   }
 }

@@ -1,56 +1,56 @@
-import styles from '../../../../src/styles'
+import styles from "../../../../src/styles";
 
 const cls = styles({
   // display:flex;
-  default: 'display: flex;',
+  default: "display: flex;",
   // "color:"+color.red+";"
-  colorRed: ({color}) => `
+  colorRed: ({ color }) => `
     color: ${color.red};
   `,
   // "color:"+color.blue+";"
-  colorBlue: ({color}) => ({
+  colorBlue: ({ color }) => ({
     color: color.blue,
   }),
   // "color:"+color.yellow+";"
-  colorYellow: ({color}) => {
-    return `color: ${color.yellow};`
+  colorYellow: ({ color }) => {
+    return `color: ${color.yellow};`;
   },
   // "color:"+color.green+";"
-  colorGreen: ({color}) => {
+  colorGreen: ({ color }) => {
     return {
       color: color.green,
-    }
+    };
   },
   // if (IS_PROD) return "color:"+color.pink+";"
   // return "color:"+color.yellow+";"
-  colorProdPink: ({color}) => {
+  colorProdPink: ({ color }) => {
     if (IS_PROD) {
-      return `color: ${color.pink};`
+      return `color: ${color.pink};`;
     }
-    return `color: ${color.yellow};`
+    return `color: ${color.yellow};`;
   },
   // if (IS_PROD) return "color:"+color.lightBlue+";"
   // return "color:"+color.yellow+";"
-  colorLightBlue: ({color}) => {
+  colorLightBlue: ({ color }) => {
     if (IS_PROD) {
       return {
         color: color.lightBlue,
-      }
+      };
     }
     return {
       color: color.yellow,
-    }
+    };
   },
   // return "color:"+color.font.yellow+";"
-  colorFontYellow: ({color}) => {
+  colorFontYellow: ({ color }) => {
     return {
       color: color.font.bath.yellow,
-    }
+    };
   },
   // return "height"+vh+";"
-  vh: ({vh}) => {
+  vh: ({ vh }) => {
     return {
       height: vh,
-    }
+    };
   },
-})
+});
